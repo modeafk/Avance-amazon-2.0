@@ -6,10 +6,75 @@
     <title>Store Final</title>
     <link rel="stylesheet" href="store5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="carrito.css">
 </head>
 <body>
     <div class="header">      
-   
+        
+        <div class="container">
+            <div class="row">
+                <div class="four columns">
+                    <img src="https://www.registrarcorp.com/wp-content/uploads/2021/02/Amazon-logo.png" width="150" id="logo">
+                </div>
+                <div class="two columns u-pull-right">
+                    <ul>
+                        <li class="submenu">
+                            <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" width="30px" height="30px" id="img-carrito">
+                            <div id="carrito">
+
+                                <table id="lista-carrito" class="u-full-width">
+                                    <thead>
+                                        <tr>
+                                            <th>Imagen</th>
+                                            <th>Nombre</th>
+                                            <th>Precio</th>
+                                            <th>Cantidad</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tbody><tr>
+                                            <td>
+                                                <img src="file:///C:/Users/ELITE/source/repos/carrito/img/curso2.jpg" width="100">
+                                            </td>
+                                            <td> Curso de Comida Vegetariana </td>
+                                            <td> $15 </td>
+                                            <td> 3 </td>
+                                            <td>
+                                                <a href="#" class="borrar-curso" data-id="2">X</a>
+                                            </td>
+                                            </tr><tr>
+                                            <td>
+                                                <img src="file:///C:/Users/ELITE/source/repos/carrito/img/curso3.jpg" width="100">
+                                            </td>
+                                            <td> Guitarra para Principiantes </td>
+                                            <td> $15 </td>
+                                            <td> 1 </td>
+                                            <td>
+                                                <a href="#" class="borrar-curso" data-id="3">X</a>
+                                            </td>
+                                            </tr><tr>
+                                            <td>
+                                                <img src="file:///C:/Users/ELITE/source/repos/carrito/img/curso1.jpg" width="100">
+                                            </td>
+                                            <td> Diseño Web para Principiantes </td>
+                                            <td> $15 </td>
+                                            <td> 1 </td>
+                                            <td>
+                                                <a href="#" class="borrar-curso" data-id="6">X</a>
+                                            </td>
+                                            </tr></tbody>
+                                    </tbody>
+                                </table>
+
+                                <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="container">
             <div class="navbar navbar-center">
                 <div class="logo">
