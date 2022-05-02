@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <title>Menu</title>
-    <link rel="stylesheet" href='{{ url_for("static", filename="global.css") }}'>
+    
 	{%block estilos%}{%endblock%}
 </head>
 <body>
@@ -25,7 +25,7 @@
                 <input type="text" id="busqueda" name="busqueda">
                 <button type="submit">Search</button>
             </div>
-            <a class="btn-header" href="cart">&#x1f6d2;</a>
+            <a class="btn-header" href="carrito">&#x1f6d2;</a>
             {% if current_user.is_authenticated %}
                 <div>Bienvenido {{current_user.username}}</div>
             {% endif %}
@@ -34,15 +34,6 @@
 	{%block contenido%}
 	
 	{%endblock%}
-    <footer>
-        <div>
-            <img src="" alt="Another Logo(?)">
-        </div>
-        <nav>
-            <a href="#">Algo0</a>
-            <a href="#">Algo1</a>
-        </nav>
-    </footer>
     <script src='{{ url_for("static", filename="toggleMenu.js") }}'>
     </script>
 </body>

@@ -13,7 +13,7 @@ class User(UserMixin):
     
     def check_password(self, password):
         return check_password_hash(self.password, password)
-
+    
 users = []
 
 def get_user(username):

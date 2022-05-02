@@ -1,0 +1,40 @@
+{%extends "layout.html"%}
+
+{%block estilos%}
+<link rel="stylesheet" href='{{ url_for("static", filename="register.css") }}'>
+{%endblock%}
+
+{%block contenido%}
+
+
+    <div class="container">
+      <div class="logo">
+          <img src="https://www.registrarcorp.com/wp-content/uploads/2021/02/Amazon-logo.png" alt="imagen">
+      </div>
+      <!-- <hr> -->
+      <div class="box">
+          <h3>Crear cuenta</h3>
+          <form action="" method='post'>
+
+          <label><b>username</b></label>
+          <input type="text" autocomplete="off" placeholder="Juan,José,Raúl" name="username" id="username" required>
+
+          <label><b>email </b></label>
+          <input type="email" autocomplete="off" placeholder="****@gmail.com" name="email" id="email" required>
+      
+          <label><b>Contraseña</b></label>
+          <input type="password" autocomplete="off" placeholder="ingresar Contraseña" name="password" id="password" required>
+
+          <label><b> confirmar Contraseña</b></label>
+          <input type="password" autocomplete="off" placeholder="ingresar Contraseña" name="psw" id="psw" required>
+      
+      
+          <button type="submit" class="registerbtn">Continuar</button>
+        </form>
+          </div>
+      </div>
+      <!-- <hr> -->
+    </div>
+  
+
+{%endblock%}

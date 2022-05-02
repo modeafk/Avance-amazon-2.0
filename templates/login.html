@@ -1,0 +1,27 @@
+{%extends "layout.html"%}
+
+{%block estilos%}
+<link rel="stylesheet" href='{{ url_for("static", filename="login.css") }}'>
+{%endblock%}
+
+{%block contenido%}
+
+<div id="logo"> </div>
+<h1>sing in</h1>
+
+<section class="all">
+
+    <div id="login">
+        <form action="" method="post">
+    <br>    
+        <label for="username">username</label> <br>
+        <input type="text" id="username" name="username"  autocomplete="off" placeholder="text" class="control" required>
+    <br>
+        <label for="password">Password</label> <br>
+        <input type="password" id="password" name="password" autocomplete="off" placeholder="ingresa tu password" class="control"required>
+        <button>sign in </button>
+    </form>
+    </div>
+</section>
+        
+{%endblock%}

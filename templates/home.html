@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
-    <title>Store Final</title>
-    <link rel="stylesheet" href="../static/store5.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../static/carrito.css">
-</head>
-<body>
+{%extends "layout.html"%}
+{%block estilos%}
+<link rel="stylesheet" href='{{ url_for("static", filename="home.css") }}'>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="stylesheet" href="carrito.css">
+
+{%endblock%}
+
+
+{%block contenido%}
+
     <div class="header">
 
         <div class="container">
             <div class="navbar navbar-center">
                 <div class="logo">
-                    <img src="../static/images_store/logo.png" width="125px">
+                    <img src="images_store/logo.png" width="125px">
                 </div>
             </div>      
             <div class="navbar">                
                 <nav>
-                    <ul id="MenuItems">
-                        <li><a href="">Inicio</a></li>
-                        <li><a href="">Nosotros</a></li>
-                        <li><a href="">Productos</a></li>
-                        <li><a href="">Contacto</a></li>
-                        <li><a href="sig-in.html">Iniciar sesion</a></li>
-                        <li><a href="register.html">Registrar</a></li>
-                        <li class="submenu">
-                            <a href="carrito.html"><img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" width="30px" height="30px" id="img-carrito"></a>
-                            <div id="carrito">
 
                                 <table id="lista-carrito" class="u-full-width">
                                     <thead>
@@ -43,7 +34,7 @@
                                     <tbody>
                                         <tbody><tr>
                                             <td>
-                                                <img src="../static/images_store/phone2.png" width="100">
+                                                <img src="../static/images_store/product-3.jpg" width="100">
                                             </td>
                                             <td> Camisa de color Rojo </td>
                                             <td> $50 </td>
@@ -53,7 +44,7 @@
                                             </td>
                                             </tr><tr>
                                             <td>
-                                                <img src="../static/images_store/phone2.png" width="100">
+                                                <img src="../static/images_store/product-1.jpg" width="100">
                                             </td>
                                             <td> Camisa de color Rojo </td>
                                             <td> $90 </td>
@@ -63,7 +54,7 @@
                                             </td>
                                             </tr><tr>
                                             <td>
-                                                <img src="../static/images_store/phone2.png" width="100">
+                                                <img src="../static/images_store/product-2.jpg" width="100">
                                             </td>
                                             <td> Camisa de color Rojo </td>
                                             <td> $100 </td>
@@ -102,13 +93,13 @@
         <div class="small-container">
             <div class="row">
                 <div class="col-3">
-                    <img src="../static/images_store/phone0.png">
+                    <img src="../static/images_store/category-1.jpg">
                 </div>
                 <div class="col-3">
-                    <img src="../static/images_store/phone0.png">
+                    <img src="../static/images_store/category-2.jpg">
                 </div>
                 <div class="col-3">
-                    <img src="../static/images_store/phone0.png">
+                    <img src="../static/images_store/category-3.jpg">
                 </div>
             </div>
         </div>
@@ -119,7 +110,7 @@
         <h2 class="title">Productos Destacados</h2>
         <div class="row">
             <div class="col-4">
-                <img src="../static/images_store/phone3.png">
+                <img src="../static/images_store/product-1.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -131,7 +122,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone3.png">
+                <img src="../static/images_store/product-2.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -143,7 +134,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone3.png">
+                <img src="../static/images_store/product-3.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -155,7 +146,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone3.png">
+                <img src="../static/images_store/product-4.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -170,7 +161,7 @@
         <h2 class="title">Ultimos Productos</h2>
         <div class="row">
             <div class="col-4">
-                <img src="../static/images_store/phone0.png">
+                <img src="../static/images_store/product-1.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -182,7 +173,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone0.png">
+                <img src="../static/images_store/product-2.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -194,7 +185,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone0.png">
+                <img src="../static/images_store/product-3.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -206,7 +197,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone0.png">
+                <img src="../static/images_store/product-4.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -220,7 +211,7 @@
         </div>
         <div class="row">
             <div class="col-4">
-                <img src="../static/images_store/phone1.png">
+                <img src="../static/images_store/product-1.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -232,7 +223,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone1.png">
+                <img src="../static/images_store/product-2.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -244,7 +235,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone1.png">
+                <img src="../static/images_store/product-3.jpg">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -256,7 +247,7 @@
                 <p>50so</p>
             </div>
             <div class="col-4">
-                <img src="../static/images_store/phone1.png">
+                <img src="c">
                 <h4> Camisa de color Rojo</h4>
                 <div class="rating">
                     <i class="fa-solid fa-star"></i>
@@ -293,5 +284,5 @@
         </div>
     </div>
 
-</body>
 </html>
+	{%endblock%}

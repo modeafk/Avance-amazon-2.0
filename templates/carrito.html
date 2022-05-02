@@ -1,34 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito Store Final</title>
-    <link rel="stylesheet" href="../static/store5.css">
+{%extends "layout.html"%}
+
+{%block estilos%}
+    <link rel="stylesheet" href='{{ url_for("static", filename="carrito.css") }}'>
+    <link rel="stylesheet" href="store5.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-    <link rel="stylesheet" href="../static/carrito.css">
-</head>
-<body>
-    <body>
+{%endblock%}
+
+{%block contenido%}
+
         <div class="header">
     
             <div class="container">
                 <div class="navbar navbar-center">
                     <div class="logo">
-                        <img src="../static/images_store/logo.png" width="125px">
+                        <img src="images_store/logo.png" width="125px">
                     </div>
                 </div>      
-                <div class="navbar">                
-                    <nav>
-                        <ul id="MenuItems">
-                          <li><a href="store5.html">Inicio</a></li>
-                            <li><a href="">Nosotros</a></li>
-                            <li><a href="">Productos</a></li>
-                            <li><a href="">Contacto</a></li>
-              
-                        </ul>
-                    </nav>
-                </div>
+                
             </div>
         </div>
 
@@ -41,7 +29,7 @@
                         <td class="summary-img-wrap">
                             <div class="summary-img">
                                 <div class="summary-img-thumb">
-                                    <img alt="Campera Leather Night (XS, Marrón)" title="Campera Leather Night (XS, Marrón)" src="../static/images_store/phone0.png" width="75px">
+                                    <img alt="Campera Leather Night (XS, Marrón)" title="Campera Leather Night (XS, Marrón)" src="images_store/product-1.jpg" width="75px">
                                 </div>
                             </div>
                         </td>
@@ -55,7 +43,7 @@
                         <td class="summary-img-wrap">
                             <div class="summary-img">
                                 <div class="summary-img-thumb">
-                                    <img alt="Remera Dale! (Gris, S)" title="Remera Dale! (Gris, S)" src="../static/images_store/phone0.png" width="75px">
+                                    <img alt="Remera Dale! (Gris, S)" title="Remera Dale! (Gris, S)" src="images_store/product-1.jpg" width="75px">
                                 </div>
                             </div>
                         </td>
@@ -70,7 +58,7 @@
                         <td class="summary-img-wrap">
                             <div class="summary-img">
                                 <div class="summary-img-thumb">
-                                    <img alt="Remera Dale! (Blanco, XL)" title="Remera Dale! (Blanco, XL)" src="../static/images_store/phone0.png" width="75px">
+                                    <img alt="Remera Dale! (Blanco, XL)" title="Remera Dale! (Blanco, XL)" src="images_store/product-1.jpg" width="75px">
                                 </div>
                             </div>
                         </td>
@@ -101,7 +89,7 @@
             <h2 class="title">Productos Destacados</h2>
             <div class="row">
                 <div class="col-4">
-                    <img src="../static/images_store/phone1.png">
+                    <img src="images_store/product-1.jpg">
                     <h4> Camisa de color Rojo</h4>
                     <div class="rating">
                         <i class="fa-solid fa-star"></i>
@@ -113,7 +101,7 @@
                     <p>50so</p>
                 </div>
                 <div class="col-4">
-                    <img src="../static/images_store/phone1.png">
+                    <img src="images_store/product-2.jpg">
                     <h4> Camisa de color Rojo</h4>
                     <div class="rating">
                         <i class="fa-solid fa-star"></i>
@@ -125,7 +113,7 @@
                     <p>50so</p>
                 </div>
                 <div class="col-4">
-                    <img src="../static/images_store/phone1.png">
+                    <img src="images_store/product-3.jpg">
                     <h4> Camisa de color Rojo</h4>
                     <div class="rating">
                         <i class="fa-solid fa-star"></i>
@@ -137,7 +125,7 @@
                     <p>50so</p>
                 </div>
                 <div class="col-4">
-                    <img src="../static/images_store/phone1.png">
+                    <img src="images_store/product-4.jpg">
                     <h4> Camisa de color Rojo</h4>
                     <div class="rating">
                         <i class="fa-solid fa-star"></i>
@@ -156,23 +144,21 @@
             <div class="small-container">
                 <div class="row">
                     <div class="col-5">
-                        <img src="../static/images_store/logo-godrej.png">
+                        <img src="images_store/logo-godrej.png">
                     </div>
                     <div class="col-5">
-                        <img src="../static/images_store/logo-coca-cola.png">
+                        <img src="images_store/logo-coca-cola.png">
                     </div>
                     <div class="col-5">
-                        <img src="../static/images_store/logo-oppo.png">
+                        <img src="images_store/logo-oppo.png">
                     </div>
                     <div class="col-5">
-                        <img src="../static/images_store/logo-paypal.png">
+                        <img src="images_store/logo-paypal.png">
                     </div>
                     <div class="col-5">
-                        <img src="../static/images_store/logo-philips.png">
+                        <img src="images_store/logo-philips.png">
                     </div>
                 </div>
             </div>
         
-    </body>
-</body>
-</html>
+{%endblock%}
