@@ -1,21 +1,22 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_mysqldb import MySQL
-from flask_wtf.csrf import CSRFProtect
-from flask_login import LoginManager, login_user, logout_user, login_required
-from config import config
-
-# Models:
-from modelos.model_user import ModelUser
-
-# Entities:
-from modelos.entidades.user import User
+from unicodedata import name
+from flask import Flask, redirect, render_template, request, url_for
+from flask_login import LoginManager, current_user, login_required, login_user, logout_user
+from user import users, get_user, User
 
 
 
 app = Flask(__name__)
+login_manager = LoginManager()
+login_manager.init_app(app)
+app.config['SECRET_KEY'] = 'abc'
 
 
-db = MySQL(app)
+@login_manager.user_loader
+def load_user(user_id):
+    for user in users:
+        if user.id == user_id:
+            return user
+    return None
 
 
 @app.route('/')
@@ -23,33 +24,42 @@ def index():
     return redirect(url_for('login'))
 
 
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return "Ya estas loggeado"
     if request.method == 'POST':
-        #print(request.form['username'])
-        user = User(0, request.form['username'], request.form['password'])
-        logged_user = ModelUser.login(db, user)
-        if logged_user != None:
-            if logged_user.password:
-                login_user(logged_user)
-                return redirect(url_for('home'))
-            else:
-                flash("Invalid password...")
-                return render_template('auth/store5.html')
-        else:
-            flash("User not found...")
-            return render_template('auth/store5.html')
-    else:
-        return render_template('auth/sig-in.html')
+        user = get_user(request.form['username'])
+        if user and user.check_password(request.form['password']):
+            login_user(user, remember=True)
+            return render_template('index.html')
+    return render_template('login.html')
 
 
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    if request.method == 'POST':
+        newUser = User(str(len(users)), request.form['username'], request.form['password'])
+        users.append(newUser)
+        login_user(newUser, remember=True)
+        return redirect(url_for('index'))
+    return render_template('register.html')
 
-@app.route('/home')
-def home():
-    return render_template('home.html')
 
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('login'))
+
+
+@app.route('/cart')
+def cart():
+    return render_template('cart.html')
 
 
 if __name__ == '__main__':
-    app.config.from_abject(config['development'])
-    app.run()
+    app.run(host='127.0.0.1', port=8000, debug=True)
