@@ -28,6 +28,7 @@ form{
     padding-left: 25px;
     padding-right: 25px;
 }
+/*
 .logo{
 
     padding: 100px;
@@ -35,7 +36,8 @@ form{
     flex-wrap: wrap;
     background: url("logo/amazon.png") no-repeat center center;
     background-size: contain;
-  }
+}
+*/
 h1{
     padding: 15px;
     font-size: 3.5em;

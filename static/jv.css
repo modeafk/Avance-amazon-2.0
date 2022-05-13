@@ -1,4 +1,4 @@
- #bienvenida{
+#bienvenida{
     background-color: rgb(16, 187, 230);
 }
 .abc{
@@ -43,14 +43,24 @@
     padding: 30px;
 }
 
+.searchbar
+{
+    text-align: left;
+}
+
 #busqueda{
-    padding: 15px;
+    text-align: left;
+    padding: 5px;
     border-radius: 5px;
     background-color: antiquewhite;
 }
 
+
+
 .submenu {
+    list-style:none;
     position: relative;
+    text-align: right;
 }
 
 .submenu #carrito{
@@ -69,3 +79,9 @@
     min-height: 400px;
     min-width: 300px;
 }
+
+.cen_iz
+{
+    text-align: right;
+}
+
