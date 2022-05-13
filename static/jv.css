@@ -1,0 +1,71 @@
+ #bienvenida{
+    background-color: rgb(16, 187, 230);
+}
+.abc{
+    width: 100%;
+    
+    background-color: aquamarine;
+}
+.ab{
+    padding: 30px;
+}
+.img{
+    padding: 40px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: url("logo/Capture.PNG") center;
+    width: 50px;
+    background-size: cover;
+
+}
+
+#button1{
+    padding: 5px 12px;
+    margin-right: 40%;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
+#button1:hover{
+    background-color: wheat;
+}
+.register{
+    margin: auto;
+    text-align: center;
+    padding: 15px;
+}
+
+
+#primero{
+    padding: 30px;
+}
+
+#busqueda{
+    padding: 15px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+}
+
+.submenu {
+    position: relative;
+}
+
+.submenu #carrito{
+    display: none;
+}
+
+.submenu:hover #carrito{
+    display: block;
+    position: absolute;
+    right:0;
+
+    top:100%;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    min-height: 400px;
+    min-width: 300px;
+}

@@ -2,33 +2,91 @@
 <html lang="en">
 <head>
     <title>Menu</title>
-    
+    <link rel="stylesheet" href='{{ url_for("static", filename="jv.css") }}'>
 	{%block estilos%}{%endblock%}
 </head>
 <body>
     <header>
-        <nav>
-            <div class="btn-header" onclick="toggleMenu()">
-                &#9776
-            </div>
-            <img src="" alt="Logo">
-        </nav>
-        <nav>
-            <a href="/">Menu</a>
-            {% if current_user.is_authenticated %}
-                <a href="logout">Logout</a>
-            {% else %}
-                <a href="register">Register</a>
-                <a href="login">Login</a>
-            {% endif %}            
-            <div class="searchbar">
-                <input type="text" id="busqueda" name="busqueda">
-                <button type="submit">Search</button>
-            </div>
-            <a class="btn-header" href="carrito">&#x1f6d2;</a>
-            {% if current_user.is_authenticated %}
-                <div>Bienvenido {{current_user.username}}</div>
+        {% if current_user.is_authenticated %}
+                <h2 id="bienvenida">Bienvenido {{current_user.username}}</h2>
             {% endif %}
+        <nav class="abc">
+            <div class="img"></div>
+      
+            <div class="register">
+                <input class="ab" type="text" id="busqueda" name="busqueda">
+                <button  class="ab" id="button1" type="submit">Search</button>
+            <a id="primero" href="/">Menu</a>
+            {% if current_user.is_authenticated %}
+                <a id="primero" href="logout">Logout</a>
+            {% else %}
+                <a id="primero" href="register">Register</a>
+                <a id="primero" href="login">Login</a>
+                            
+                <ul id="MenuItems">
+                        
+                        <li class="submenu">
+                        <a class="ab" href="carrito.html"><img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" width="30px" height="30px" id="img-carrito"></a>
+
+                        <div id="carrito">
+
+                            <table id="lista-carrito" class="u-full-width">
+                                <thead>
+                                    <tr>
+                                        <th>Imagen</th>
+                                        <th>Nombre</th>
+                                        <th>Precio</th>
+                                        <th>Cantidad</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tbody><tr>
+                                        <td>
+                                            <img src="../static/images_store/phone2.png" width="100">
+                                        </td>
+                                        <td> Camisa de color Rojo </td>
+                                        <td> $50 </td>
+                                        <td> 3 </td>
+                                        <td>
+                                            <a href="#" class="borrar-curso" data-id="2">X</a>
+                                        </td>
+                                        </tr><tr>
+                                        <td>
+                                            <img src="../static/images_store/phone2.png" width="100">
+                                        </td>
+                                        <td> Camisa de color Rojo </td>
+                                        <td> $90 </td>
+                                        <td> 1 </td>
+                                        <td>
+                                            <a href="#" class="borrar-curso" data-id="3">X</a>
+                                        </td>
+                                        </tr><tr>
+                                        <td>
+                                            <img src="../static/images_store/phone2.png" width="100">
+                                        </td>
+                                        <td> Camisa de color Rojo </td>
+                                        <td> $100 </td>
+                                        <td> 1 </td>
+                                        <td>
+                                            <a href="#" class="borrar-curso" data-id="6">X</a>
+                                        </td>
+                                        </tr></tbody>
+                                </tbody>
+                            </table>
+
+                            <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+                        </div>
+                        </li>
+                        
+                    </nav>
+                </ul>
+                    
+            {% endif %}      
+         </div>      
+            
+           
+            
         </nav>
     </header>
 	{%block contenido%}

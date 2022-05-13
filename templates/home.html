@@ -3,7 +3,7 @@
 <link rel="stylesheet" href='{{ url_for("static", filename="home.css") }}'>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-<link rel="stylesheet" href="carrito.css">
+<link rel="stylesheet" href='{{ url_for("static", filename="carrito.css") }}'>
 
 {%endblock%}
 
@@ -15,62 +15,10 @@
         <div class="container">
             <div class="navbar navbar-center">
                 <div class="logo">
-                    <img src="images_store/logo.png" width="125px">
+            
                 </div>
             </div>      
             <div class="navbar">                
-                <nav>
-
-                                <table id="lista-carrito" class="u-full-width">
-                                    <thead>
-                                        <tr>
-                                            <th>Imagen</th>
-                                            <th>Nombre</th>
-                                            <th>Precio</th>
-                                            <th>Cantidad</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tbody><tr>
-                                            <td>
-                                                <img src="../static/images_store/product-3.jpg" width="100">
-                                            </td>
-                                            <td> Camisa de color Rojo </td>
-                                            <td> $50 </td>
-                                            <td> 3 </td>
-                                            <td>
-                                                <a href="#" class="borrar-curso" data-id="2">X</a>
-                                            </td>
-                                            </tr><tr>
-                                            <td>
-                                                <img src="../static/images_store/product-1.jpg" width="100">
-                                            </td>
-                                            <td> Camisa de color Rojo </td>
-                                            <td> $90 </td>
-                                            <td> 1 </td>
-                                            <td>
-                                                <a href="#" class="borrar-curso" data-id="3">X</a>
-                                            </td>
-                                            </tr><tr>
-                                            <td>
-                                                <img src="../static/images_store/product-2.jpg" width="100">
-                                            </td>
-                                            <td> Camisa de color Rojo </td>
-                                            <td> $100 </td>
-                                            <td> 1 </td>
-                                            <td>
-                                                <a href="#" class="borrar-curso" data-id="6">X</a>
-                                            </td>
-                                            </tr></tbody>
-                                    </tbody>
-                                </table>
-
-                                <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
-                            </div>
-                        </li>
-                    </ul>
-                </nav>
             </div>     
 
             <div class="row">

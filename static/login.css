@@ -1,11 +1,17 @@
 *{
     box-sizing: border-box;
+    margin: 0;
     background: fixed;
 }
-body{
-    background: url("logo/apo.jpg") no-repeat center center fixed;
-    background-size: cover;
-    
+
+form{
+
+}
+.header{
+    background-color: rgb(255, 255, 255);
+}
+.porsi{
+    padding: 20px;
 }
 .all{
     border-top: 1px solid black;
@@ -15,47 +21,42 @@ body{
     font-size: 14px;
     background-color: rgb(249, 247, 247);
     border: 1px solid black;
-    width: 340px;
-    max-width: 1400px;
-    margin: auto;
 } 
-#logo{
-    display: flex;
-    text-align: center;
-    display: block;
-    justify-content: center;
-    margin: 0px auto;
-    align-items: center;
-    height: 200px;
-    width: 250px;
-    background: url("logo/amazon.png") no-repeat center center;
-    background-size: cover;
+.container{
+    max-width: 1300px;
+    margin: auto;
+    padding-left: 25px;
+    padding-right: 25px;
 }
+.logo{
+
+    padding: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    background: url("logo/amazon.png") no-repeat center center;
+    background-size: contain;
+  }
 h1{
+    padding: 15px;
     font-size: 3.5em;
     font-weight: 300;
     letter-spacing: -0.5px;
     text-align: center;
     margin-top: 10;
 }
-#login{
+.login{
     box-sizing: border-box;
     text-align: center;
     align-items: center center;
-    
-
 }
-#login label{
+.login label{
     display: block;
     font-weight: bold;
-    text-align: left;
-    margin: 0 auto;
 }
 
 .control{
     padding: 5px 12px;
     margin-bottom: 16px;
-    width: 100%;
     vertical-align: middle;
     background-position: right 8px center;
     border-radius: 3px;
@@ -73,17 +74,17 @@ p{
  .dos{
     padding: 3px 5px 6px 50px;
 }
-button{
+.button2{
     font-size: 1.25em;
     font-weight: bold;
     display: block;
     background-color: rgb(253, 197, 11);
     color: white;
     border-radius: 3px;
-    width: 100%;
     box-shadow:1px 1px 5px rgb(0,0,0,0.5);
     padding: 5px 16px;
+    text-align: center !important;
 }
-button:hover{
+.button2:hover{
     background-color: rgba(255, 175, 4, 0.992);
 }

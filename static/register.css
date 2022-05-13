@@ -1,5 +1,4 @@
 * {
-    background-color: rgb(255, 255, 255);
     text-align: center;
     font-family: Arial, Helvetica, sans-serif;
 }
@@ -23,28 +22,21 @@ h3 {
     margin: 0;
     text-align: left;
 }
-button {
-    margin: 20px auto 0;
-}
 label {
     margin: 10px 0;
     font-size: 14px;
     display: flex !important;
 }
 
-input, button{
-    border: 1px solid;
-    border-radius: 4px;
-    width: 100%;
-    padding: 5px 10px;
-}
 
 button {
     background: #ffc107;
+    margin: 20px auto 0;
     
 }
 
-img {
+
+.img2 {
     height: 100%;
     width: 100%;
 }

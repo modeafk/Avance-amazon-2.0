@@ -5,23 +5,26 @@
 {%endblock%}
 
 {%block contenido%}
+<div class="header">
+ <div class="porsi"></div>
+ <div class="container">
+    <div class="logo"> </div>
 
-<div id="logo"> </div>
-<h1>sing in</h1>
 
-<section class="all">
+    <h1>sing in</h1>
+    <section class="all">
 
-    <div id="login">
-        <form action="" method="post">
+        <form  class="login" action="" method="post">
     <br>    
         <label for="username">username</label> <br>
         <input type="text" id="username" name="username"  autocomplete="off" placeholder="text" class="control" required>
     <br>
         <label for="password">Password</label> <br>
         <input type="password" id="password" name="password" autocomplete="off" placeholder="ingresa tu password" class="control"required>
-        <button>sign in </button>
-    </form>
-    </div>
-</section>
+        <button class="button2">sign in </button>
+            </form>
+    </section>
+  </div>
+</div>
         
 {%endblock%}
