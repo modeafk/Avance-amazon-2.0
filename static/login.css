@@ -4,12 +4,6 @@
     background: fixed;
 }
 
-form{
-
-}
-.header{
-    background-color: rgb(255, 255, 255);
-}
 .porsi{
     padding: 20px;
 }
@@ -18,9 +12,10 @@ form{
     border-radius: 6px;
     justify-content: center;
     padding: 24px !important;
-    font-size: 14px;
     background-color: rgb(249, 247, 247);
     border: 1px solid black;
+    width: 400px;
+    margin: auto;
 } 
 .container{
     max-width: 1300px;
@@ -28,23 +23,15 @@ form{
     padding-left: 25px;
     padding-right: 25px;
 }
-/*
-.logo{
 
-    padding: 100px;
-    display: flex;
-    flex-wrap: wrap;
-    background: url("logo/amazon.png") no-repeat center center;
-    background-size: contain;
-}
-*/
 h1{
     padding: 15px;
-    font-size: 3.5em;
-    font-weight: 300;
+    font-size: 2.5em;
+    font-weight: arial;
     letter-spacing: -0.5px;
     text-align: center;
-    margin-top: 10;
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .login{
     box-sizing: border-box;
@@ -57,7 +44,7 @@ h1{
 }
 
 .control{
-    padding: 5px 12px;
+    padding: 8px 20px;
     margin-bottom: 16px;
     vertical-align: middle;
     background-position: right 8px center;
@@ -86,7 +73,14 @@ p{
     box-shadow:1px 1px 5px rgb(0,0,0,0.5);
     padding: 5px 16px;
     text-align: center !important;
+    margin: auto;
+    margin-top: 7px;
 }
 .button2:hover{
     background-color: rgba(255, 175, 4, 0.992);
+}
+
+.usuario_{
+    font-weight: arial;
+    font-size: 1.3em;    
 }

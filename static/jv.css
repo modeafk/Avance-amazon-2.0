@@ -57,6 +57,12 @@ body{
     background-color: antiquewhite;
 }
 
+a{
+    padding: 5px 10px;
+    font-size: 1.2em;
+    font-weight: arial;
+    color: dodgerblue;
+}
 
 .submenu {
     list-style:none;
@@ -86,3 +92,8 @@ body{
     text-align: right;
 }
 
+.bienvenida{
+    font-weight: arial;
+    font-size: 2.4em;
+    color:rgb(255, 238, 80);    
+}
