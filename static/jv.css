@@ -61,28 +61,24 @@ body{
 .submenu {
     list-style:none;
     position: relative;
-    text-align: left;
-    margin-right: 95%;
+    text-align: right;
 }
 
 .submenu #carrito{
-
-    position: absolute;
-    top: 60px;
-    width: 400px;
-    overflow: visible;
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    justify-content: center;
-    transition:all 0.3s;
-    background-color: rgb(107, 105, 9);
+    display: none;
 }
 
 .submenu:hover #carrito{
-  opacity: 5;
-  visibility: visible;
-    
+    display: block;
+    position: absolute;
+    right:0;
+
+    top:100%;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    min-height: 400px;
+    min-width: 300px;
 }
 
 .cen_iz
