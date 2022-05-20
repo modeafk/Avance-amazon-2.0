@@ -7,6 +7,7 @@ app = Flask(__name__)
 login_manager = LoginManager()
 login_manager.init_app(app)
 app.config['SECRET_KEY'] = 'abc'
+#carrito = False
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -46,9 +47,10 @@ def register():
 def logout():
     logout_user()
     return redirect(url_for('index'))
-    
+
 @app.route('/carrito')
 def cart():
+    #carrito = True
     return render_template('carrito.html')
 
 if __name__ == '__main__':
