@@ -36,9 +36,5 @@ button {
 .img2 {
     height: 100%;
     width: 100%;
-}
-.logo {
-    width: 220px;
-    height: 80px;
-    margin: 20px auto;
+    margin: auto;
 }

@@ -1,3 +1,6 @@
+body{
+    background: radial-gradient(#fff,#12d4ae);
+}
 #bienvenida{
     background-color: rgb(16, 187, 230);
 }
@@ -9,16 +12,15 @@
 .ab{
     padding: 30px;
 }
-.img{
-    padding: 40px;
+.imagen1{
+    padding: 80px;
     margin: auto;
     display: flex;
     align-items: center;
     text-align: center;
-    background: url("logo/Capture.PNG") center;
-    width: 50px;
+    background: url("logo/store.png") center;
+    width: 400px;
     background-size: cover;
-
 }
 
 #button1{
@@ -30,7 +32,7 @@
     color: white;
 }
 #button1:hover{
-    background-color: wheat;
+    background-color: rgb(208, 82, 44);
 }
 .register{
     margin: auto;
@@ -56,28 +58,31 @@
 }
 
 
-
 .submenu {
     list-style:none;
     position: relative;
-    text-align: right;
+    text-align: left;
+    margin-right: 95%;
 }
 
 .submenu #carrito{
-    display: none;
+
+    position: absolute;
+    top: 60px;
+    width: 400px;
+    overflow: visible;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    justify-content: center;
+    transition:all 0.3s;
+    background-color: rgb(107, 105, 9);
 }
 
 .submenu:hover #carrito{
-    display: block;
-    position: absolute;
-    right:0;
-
-    top:100%;
-    z-index: 1;
-    background-color: white;
-    padding: 20px;
-    min-height: 400px;
-    min-width: 300px;
+  opacity: 5;
+  visibility: visible;
+    
 }
 
 .cen_iz
