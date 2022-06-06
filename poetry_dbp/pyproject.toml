@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "Kaori Store"
+version = "0.1.0"
+description = ""
+authors = ["modeafk <marcelo,torres.acuna@ucsp.edu.pe>,Brian Jesse Bermudez Navarro, Albert Yerem Caceres Marca"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+Flask = "2.1.2"
+Flask-Login = "0.6.1"
+Flask-MySQLdb ="1.0.1"
+Flask-WTF = "1.0.1"
+
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+ipython = "*"
+black = "^20.8b1"
+flake8 = "^3.8.4"
+flake8-bugbear = "^20.1.4"
+flake8-colors = "^0.1.6"
+flake8-commas = "^2.0.0"
+flake8-comprehensions = "^3.2.3"
+flake8-docstrings = "^1.5.0"
+flake8-import-order = "^0.18.1"
+flake8-logging-format = "^0.6.0"
+flake8-polyfill = "^1.0.2"
+flake8-print = "^3.1.4"
+flake8-quotes = "^3.2.0"
+flake8-rst-docstrings = "^0.0.14"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.black]
+line-length = 88
