@@ -7,3 +7,7 @@ Integrantes:
 -Brian Jesse Bermudez Navarro
 
 -Albert Yerem Caceres Marca
+
+
+
+Para ver los "requerimets" tiene que entrar a la carpeta poetry_dbp>pyproyect.toml
