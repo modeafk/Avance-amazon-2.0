@@ -1,59 +1,109 @@
 
-from flask import Flask, redirect, render_template, request, url_for
-from flask_login import LoginManager, current_user
-from flask_login import login_required, login_user, logout_user
-from user import users, get_user, User
+from flask import Flask, render_template, request, redirect, url_for, session
+from flask_mysqldb import MySQL
+import MySQLdb.cursors
+import re
+
 
 app = Flask(__name__)
-login_manager = LoginManager()
-login_manager.init_app(app)
-app.config['SECRET_KEY'] = 'abc'
-# carrito = False
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    for user in users:
-        if user.id == user_id:
-            return user
-    return None
+app.secret_key = 'abc'
 
 
-@app.route('/')
-def index():
-    return render_template('home.html')
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'root'
+app.config['MYSQL_PASSWORD'] = '979063554'
+app.config['MYSQL_DB'] = 'mydb'
+
+mysql = MySQL(app)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login', methods= ['POST', 'GET'])
 def login():
-    if current_user.is_authenticated:
-        return "Ya estas loggeado"
-    if request.method == 'POST':
-        user = get_user(request.form['username'])
-        if user and user.check_password(request.form['password']):
-            login_user(user, remember=True)
-            return render_template('home.html')
-    return render_template('login.html')
+    message = ''
+    if request.method == 'POST' and 'username' in request.form and 'password' in request.form:
+        username = request.form['username']
+        password = request.form['password']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM user WHERE username = % s AND password = % s', (username, password, ))
+        account = cursor.fetchone()
+        if account:
+            session['loggedin'] = True
+            session['id'] = account['id']
+            session['username'] = account['username']
+            message = 'Logged in successfully!'
+            return render_template('home.html', message = message)
+        else:
+            message = 'Incorrect username / password !'
+    return render_template('login.html', message = message)
 
+    
+@app.route('/logout')
+def logout():
+    session.pop('loggedin', None)
+    session.pop('id', None)
+    session.pop('username',None)
+    return redirect(url_for('login'))
 
+    
+@app.route('/register')
+def register_render():
+    
+    return render_template('register.html', message = '')
+
+@app.route('/register', methods=['POST'])
+def register():
+    message = ''
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['password']
+    second_password = request.form['second_password']
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute('SELECT * FROM user WHERE username = % s', (username, ))
+    account = cursor.fetchone()
+    if account:
+        message = 'la cuenta ya existe'
+    elif password != second_password:
+        message = "las contraseñas no coindicen"
+    else:
+        cursor.execute('INSERT INTO user (username, email, password, second_password) VALUES (% s, % s, % s, % s)',(username, email, password, second_password))
+        mysql.connection.commit()
+    return render_template('register.html', message = message)
+'''
 @app.route('/register', methods=['GET', 'POST'])
 def register():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
-    if request.method == 'POST':
-        newUser = User(str(len(users)),
-                       request.form['username'], request.form['password'])
-        users.append(newUser)
-        login_user(newUser, remember=True)
-        return redirect(url_for('index'))
-    return render_template('register.html')
+    message = ''
+    if request.method == 'POST':# and 'username' in request.form and 'password' in request.form and 'second_password' in request.form and 'email' in request.form:
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        second_password = request.form['second_password']
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute('SELECT * FROM user WHERE username = % s', (username, ))
+        account = cursor.fetchone()
+        if account:
+            message = 'La cuenta ya existe !'
+        elif not re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            message = 'email invalido !'
+        elif not re.match(r'[A-Za-z0-9]+', username):
+            message = 'name must contain only characters and numbers !'
+        else:
+            cursor.execute('INSERT INTO user VALUES (NULL, % s, % s, % s, % s,)', (username, email, password, second_password, ))
+            mysql.connection.commit()
+            message = 'You have successfully registered !'
+        print("a")    
+    elif request.method == 'POST':
+        message = 'Please fill out the form !'
+        print("b")
+    return render_template('register.html', message = message)
 
-
-@app.route('/logout')
-@login_required
-def logout():
-    logout_user()
-    return redirect(url_for('index'))
+'''
+@app.route('/')
+def index():
+    if 'loggedin' in session:
+        return render_template("home.html")
+    return render_template('home.html')
 
 
 @app.route('/carrito')
@@ -63,4 +113,4 @@ def cart():
 
 
 if __name__ == '__main__':
-    app.run(host='127.0.0.1', port=8000, debug=True)
+    app.run(host="localhost", port= int("5000"))

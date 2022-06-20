@@ -26,19 +26,13 @@
                 <div class="izq" id="izq">
                     <ul id="MenuItems">
                         <nav class="cen_iz">
-                            <a href="/">Menu</a>
-                            {% if current_user.is_authenticated %}
-                                <a href="logout">Logout</a>
-                            {% else %}
-                                <a href="register">Register</a>
-                                <a href="login">Login</a>
-                            {% endif %}
-                            {% if current_user.is_authenticated %}
-                                <div class="bienvenida">Bienvenido {{current_user.username}}</div>
-                            {% endif %}
+                            <a href="/">Menu</a> 
+                            <a href="/register"">register</a>
+                            <a href="/login"">login</a>
+                            <a href="/carrito_compras"></a>
+                            <a href="/logout">Logout</a>
                         </nav>
                     </ul>
-                    {% if current_user.is_authenticated %}
                     <div style="position: relative; text-align: right; height: 45px; width: 45px; float: right;" id="carrito">
                         <li class="submenu">
                             <a href="carrito"><img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" width="30px" height="30px" id="img-carrito"></a>
@@ -60,7 +54,6 @@
                             </div>
                         </li>
                     </div>
-                    {% endif %}
                 </div>
             </div>     
         </div>
