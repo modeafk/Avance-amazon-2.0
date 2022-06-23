@@ -1,12 +1,13 @@
 
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from flask_mysqldb import MySQL
 import MySQLdb.cursors
 import re
 
+from database import setup, insert
 
 app = Flask(__name__)
-
+setup.create_tables()
 
 app.secret_key = 'abc'
 
@@ -38,7 +39,7 @@ def login():
             message = 'Incorrect username / password !'
     return render_template('login.html', message = message)
 
-    
+
 @app.route('/logout')
 def logout():
     session.pop('loggedin', None)
@@ -46,7 +47,7 @@ def logout():
     session.pop('username',None)
     return redirect(url_for('login'))
 
-    
+
 @app.route('/register')
 def register_render():
     
@@ -111,6 +112,31 @@ def cart():
     # carrito = True
     return render_template('carrito.html')
 
+
+# API
+
+@app.route('/users', methods=['GET'])
+def get_users():
+    data = insert.select_all_users()
+
+    if data:
+        return jsonify({'tasks': data})
+    elif data == False:
+        return jsonify({'message': 'Internal Error'})
+    else:
+        return jsonify({'tasks': {}})
+
+
+@app.route('/productos', methods=['GET'])
+def get_products():
+    data = insert.select_all_products()
+
+    if data:
+        return jsonify({'productos': data})
+    elif data == False:
+        return jsonify({'message': 'Internal Error'})
+    else:
+        return jsonify({'tasks': {}})
 
 if __name__ == '__main__':
     app.run(host="localhost", port= int("5000"))
