@@ -10,6 +10,30 @@
 body{
     font-family: 'Poppins',sans-serif;
 }
+.image{
+    padding: 80px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: url("logo/store.png") center;
+    width: 400px;
+    background-size: cover;
+}
+#busqueda{
+    text-align: left;
+    padding: 5px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+}
+#button1{
+    padding:5px 12px;
+    margin-right: 50%;
+    border-radius: 5px;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
 .navbar{
     align-items: center;
     padding: 20px;

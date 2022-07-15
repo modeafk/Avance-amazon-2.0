@@ -9,9 +9,9 @@ session = {}
 register_bp = Blueprint('routes-register', __name__)
 @register_bp.route('/register', methods=['POST'])
 def add_user():
-    username = request.form.get("username")
-    email = request.form.get("email")
-    password = request.form.get("password")
+    username = request.json['username']
+    email = request.json['email']
+    password = request.json['password'] 
 
     if username != None and email != None and password != None:
         data = (username, email, password)
@@ -20,6 +20,7 @@ def add_user():
             user = tasks.select_user_by_id(user_id)
             return jsonify({'register': True})
     return jsonify({'register': False})
+
 
 login_bp = Blueprint('routes-login', __name__)
 @login_bp.route('/login', methods=['POST'])
