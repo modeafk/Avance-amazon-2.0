@@ -78,19 +78,13 @@ def get_product():
     data = tasks.select_all_products()
 
     if data:
-<<<<<<< HEAD
         return jsonify(data)
     elif data == False:
-=======
-        return jsonify({'Product': data})
-    elif data:
->>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
         return jsonify({'message': 'Internal Error'})
     else:
         return jsonify({'data': {}})
 
 
-<<<<<<< HEAD
 @product_bp.route('/product', methods=['PUT'])
 def update_product():
     product_id = request.json['product_id']
@@ -102,12 +96,6 @@ def update_product():
 
 
 @product_bp.route('/product/<string:id_p>', methods=['GET'])
-=======
-product_selc_bp = Blueprint('routes-product/<string:id_p>', __name__)
-
-
-@product_selc_bp.route('/product/<string:id_p>', methods=['GET'])
->>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
 def selec_produc(id_p):
     if tasks.select_product_by_id(id_p):
         product = tasks.select_product_by_id(id_p)

@@ -50,15 +50,9 @@ def select_user_by_id(_id):
 
 def user_login(_username, _password):
     conn = create_connection()
-<<<<<<< HEAD
     
     sql = f'''SELECT user_id FROM Users WHERE username='{_username}' 
             AND password='{_password}' '''
-=======
-
-    sql = f'''SELECT user_id FROM Users WHERE username ='{_username}'
-    AND password ='{_password}' '''
->>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
 
     try:
         conn.row_factory = sqlite3.Row
@@ -142,7 +136,6 @@ def select_all_products():
             conn.close()
 
 
-<<<<<<< HEAD
 def update_task(_id, data):
     conn = create_connection()
 
@@ -165,9 +158,6 @@ def update_task(_id, data):
             conn.close()
 
 # ------------------------------- cart ------------------------------- 
-=======
-# ------------------------------- cart -------------------------------
->>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
 def insert_products_cart(data):
     conn = create_connection()
 
