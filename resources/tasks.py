@@ -46,8 +46,10 @@ def seccion_login():
 
 @login_bp.route('/login', methods=['GET'])
 def loget():
-    return jsonify({'id': session['id'], 'loggedin':session['loggedin'], 'username':session['username']})
-
+    if session:
+        A= {'id': session['id'], 'loggedin':session['loggedin'], 'username':session['username']}
+        return jsonify (A)
+    return jsonify({"loggedin":False})
 
 
 logout_bp = Blueprint('routes-logout', __name__)
@@ -56,7 +58,7 @@ logout_bp = Blueprint('routes-logout', __name__)
 @logout_bp.route("/logout", methods=["POST"])
 def login_render():
     if "loggedin" in session:
-        session.pop('loggedin', False)
+        session.pop('loggedin',None)
         session.pop('id', None)
         session.pop('username', None)
     print(session)

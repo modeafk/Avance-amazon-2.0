@@ -18,7 +18,11 @@
 
             const request = new XMLHttpRequest();
             request.open('POST', 'http://127.0.0.1:5000/logout');
+            request.onload = () => {
             location.href = "menu.html";
+            }
+            request.send("sexp");
+
         }
 
         document.addEventListener('DOMContentLoaded', () => {
