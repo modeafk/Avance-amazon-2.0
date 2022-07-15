@@ -9,13 +9,17 @@
     <link rel="stylesheet" type="text/css" href="../static/login.css">
 
     <script type="text/javascript">
+        
+
         function logout()
         {
-            location.href= "login.html"
-        }
-    </script>
+            username = null;
+            psw = null;
 
-    <script> 
+            const request = new XMLHttpRequest();
+            request.open('POST', 'http://127.0.0.1:5000/logout');
+            location.href = "menu.html";
+        }
 
         document.addEventListener('DOMContentLoaded', () => {
             const request = new XMLHttpRequest();
@@ -46,30 +50,6 @@
                 request.send(data);
                 return false;
             };
-
-            document.querySelector("#iniciar").disabled = true;
-
-            function login(){
-                if (document.querySelector("#username").value.length > 0 && document.querySelector("#password").value.length > 0){
-                    document.querySelector("#iniciar").style.background="#ffc107";
-                    document.querySelector("#iniciar").style.color="black";
-                    document.querySelector("#iniciar").disabled = false;
-                }
-                else
-                document.querySelector("#iniciar").disabled = true;
-            }
-
-            document.querySelector("#username").onkeyup = () => {
-                document.querySelector("#iniciar").style.background="#b80f22";
-                document.querySelector("#iniciar").style.color="#fff";
-                login()
-            };
-            document.querySelector("#password").onkeyup = () => {
-                document.querySelector("#iniciar").style.background="#b80f22";
-                document.querySelector("#iniciar").style.color="#fff";
-                login()
-            };
-
         });
     </script>
     <title>Login</title>
@@ -77,9 +57,9 @@
 </head>
 
 <body>
-        <a href="menu.html" class="image"></a>
+    <a onclick="logout()" class="image"></a>
     <div class="header"></div>
-     <div class="container">
+    <div class="container">
         <div class="Login">
         <header>
             <h1>Iniciar sesión</h1> 
@@ -98,7 +78,6 @@
         <a href="register.html" class="opciones">register</a>
             </section>
         </div>
-     </div>
     </div>
 </body>
 </html>

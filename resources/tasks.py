@@ -1,8 +1,12 @@
+from math import fabs
 from flask import request, jsonify, Blueprint
 
 from database import tasks
 
-session = {}
+session = { "loggedin": False,
+            "id":None,
+            "username": None
+}
 
 
 register_bp = Blueprint('routes-register', __name__)
@@ -40,18 +44,23 @@ def seccion_login():
     return jsonify({'login': False})
 
 
+@login_bp.route('/login', methods=['GET'])
+def loget():
+    return jsonify({'id': session['id'], 'loggedin':session['loggedin'], 'username':session['username']})
+
+
+
 logout_bp = Blueprint('routes-logout', __name__)
 
 
 @logout_bp.route("/logout", methods=["POST"])
 def login_render():
     if "loggedin" in session:
-        session.pop('loggedin', None)
-    if "id" in session:
+        session.pop('loggedin', False)
         session.pop('id', None)
-    if "username" in session:
         session.pop('username', None)
-    return jsonify("good")
+    print(session)
+    return jsonify({'login': False})
 
 
 product_bp = Blueprint('routes-product', __name__)

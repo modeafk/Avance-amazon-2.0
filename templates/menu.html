@@ -3,29 +3,85 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	<link rel="stylesheet" href='{{ url_for("static", filename="home.css") }}'>
-    <link rel="stylesheet" href='{{ url_for("static", filename="carrito.css") }}'>
+	<link rel="stylesheet" type="text/css" href='../static/home.css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href='../static/carrito.css'>
 
     <title>index</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <script>
+        function loget(){
+            const request = new XMLHttpRequest();
+            request.open('GET', 'http://127.0.0.1:5000/login');
+            const data = JSON.parse(request.responseText);
+            if (data['login']){
+                return true;
+            }
+            return false;
+        }
         function logout(){
+            const request = new XMLHttpRequest();
+            request.open('POST', 'http://127.0.0.1:5000/logout');
+            request.send("reset all");
             location.href = "login.html";
+        }
+        function login(){
+            location.href = "login.html";
+        }
+        function register(){
+            location.href = "register.html";
         }
 
         function select_product(id_product){
             const request = new XMLHttpRequest();
-            request.open('POST', 'http://127.0.0.1:5000/main/select');
+            request.open('POST', 'http://127.0.0.1:5000/product/id_product');
             const data = new FormData();
             data.append('product_id', id_product);
             data.append('action', 'select');
             request.send(data);
             request.onload = () => {
-                location.href = "productos_link.html";
+                location.href = "produc.html";
             }
         }
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const request = new XMLHttpRequest();
+            request.open('POST', 'http://127.0.0.1:5000/logout');
+            request.open('GET', 'http://127.0.0.1:5000/login');
+            request.onload = () => {
+                const data = JSON.parse(request.responseText);
+                var user = data;
+                var logout = document.createElement("a");
+                logout.setAttribute("onclick", "logout()")
+                logout.innerHTML = `
+                    Logout
+                `;
+
+                var login = document.createElement("a");
+                login.setAttribute("onclick", "login()")
+                login.innerHTML = `
+                    login
+                `;
+
+                var register = document.createElement("a");
+                register.setAttribute("onclick", "register()")
+                register.innerHTML = `
+                    register
+                `;
+                console.log(data);
+                if (data['loggedin']) {
+                    document.querySelector(".loget").appendChild(logout);
+                } else {
+                    document.querySelector(".loget").appendChild(login);
+                    document.querySelector(".loget").appendChild(register);
+                }
+            }
+            request.send("get request");
+        });
+
 
         document.addEventListener('DOMContentLoaded', () => {
             const request = new XMLHttpRequest();
@@ -78,24 +134,23 @@
                     }
                 }
             }
-
-        request.send("get request");
+            request.send("get request");
         });
 
     </script>
 
 </head>
-<link rel="stylesheet" type="text/css" href='../static/home.css'>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-<link rel="stylesheet" href='{{ url_for("static", filename="carrito.css") }}'>
+
 <body>
     <a href="menu.html" class="image"></a>
     <div class="buscador">
         <input type="text" id="busqueda" name="busqueda">
         <button id="button1" type="submit">search</button>
-        <a href="login.html">login</a>
-        <a href="register.html">register </a>
-</div>
+
+        <div class="loget">
+        </div>
+
+    </div>
     <div class="header">
 
         <div class="container">
@@ -193,8 +248,8 @@
         </div>
     </div>
 
-
-<script src='{{ url_for("static", filename="slider.js") }}'>
-</script>
+    
+    <script src="../static/slider.js">
+    </script>
 </body>
 </html>
