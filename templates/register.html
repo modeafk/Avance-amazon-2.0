@@ -1,38 +1,97 @@
-{%extends "layout.html"%}
+<!DOCTYPE html>
+<html>
 <head>
-  <title>register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" type="text/css" href="../static/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/jv.css">
+    <link rel="stylesheet" type="text/css" href="../static/carrito.css">
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
+
+    <script type="text/javascript">
+        function logout()
+        {
+            location.href= "login.html"
+        }
+    </script>
+
+    <script> 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const request = new XMLHttpRequest();
+            request.open('POST', 'http://127.0.0.1:5000/logout');
+
+            document.querySelector("#form").onsubmit = () => {
+                const username = document.querySelector("#username").value;
+                const psw = document.querySelector("#password").value;
+
+                request.open('POST', 'http://127.0.0.1:5000/register');
+
+                request.onload = () => {
+                    const data = JSON.parse(request.responseText);
+                    alert(data);
+                    if(data['login']) {
+                        localStorage.setItem("username", username);
+                        location.href = "menu.html";
+                    } else {
+                        document.querySelector("#username").value = "";
+                        document.querySelector("#password").value = "";
+                    }
+                }
+
+                const data = new FormData();
+                data.append('username', username);
+                data.append('password', psw);
+
+                request.send(data);
+                return false;
+            };
+
+            document.querySelector("#iniciar").disabled = true;
+
+            function login(){
+                if (document.querySelector("#username").value.length > 0 && document.querySelector("#password").value.length > 0){
+                    document.querySelector("#iniciar").style.background="#ffc107";
+                    document.querySelector("#iniciar").style.color="black";
+                    document.querySelector("#iniciar").disabled = false;
+                }
+                else
+                document.querySelector("#iniciar").disabled = true;
+            }
+
+            document.querySelector("#username").onkeyup = () => {
+                document.querySelector("#iniciar").style.background="#b80f22";
+                document.querySelector("#iniciar").style.color="#fff";
+                login()
+            };
+            document.querySelector("#password").onkeyup = () => {
+                document.querySelector("#iniciar").style.background="#b80f22";
+                document.querySelector("#iniciar").style.color="#fff";
+                login()
+            };
+
+        });
+    </script>
+    <title>Login</title>
+    
 </head>
 
-{%block estilos%}
-<link rel="stylesheet" href='{{ url_for("static", filename="register.css") }}'>
-{%endblock%}
-{%block contenido%}
-
-
-<div class="container">
-  <!-- <hr> -->
-  <h3>Crear cuenta</h3>
-  <div class="box">   
-    <form action="{{url_for('register')}}" method='post' autocomplete="off">
-      <div class="message">{{ message }}</div>
-
-      <label class="e_entrada"><b>Username</b></label>
-      <input class ="entrada" type="text" autocomplete="off" placeholder="Juan,José,Raúl" name="username" id="username" required>
-
-      <label class="e_entrada"><b>E-mail </b></label>
-      <input class ="entrada" type="email" autocomplete="off" placeholder="****@gmail.com" name="email" id="email" required>
-  
-      <label class="e_entrada"><b>Contraseña</b></label>
-      <input class ="entrada" type="password" autocomplete="off" placeholder="ingresar Contraseña" name="password" id="password" required>
-
-      <label class="e_entrada"><b>Confirmar Contraseña</b></label>
-      <input class ="entrada" type="password" autocomplete="off" placeholder="ingresar Contraseña" name="second_password" id="psw" required>
-  
-  
-      <button type="submit" class="registerbtn">Continuar</button>
-    </form>
-    <p class="worddark">Already have account? <a class="worddark" href="{{ url_for('login')}}">Login here</a></p>
-  </div>
-</div>
-
-{%endblock%}
+<body>
+    <div class="Login">
+        <header>
+            <h1>Iniciar sesión</h1> 
+        </header>
+        <form class = "login" id="form">
+            <br>
+            <label class="usuario_" for = "username">Nombre de Usuario</label> <br>
+            <input id="username" type="text" placeholder="Alberto Llamoca N" name="user" autocomplete="off" class="control" required>
+            <br>
+            <label class="usuario_" for="password">password</label>
+            <input id="password" type="password" placeholder="Ingresa tu password" name="password" autocomplete="off" class="control"required>
+            <input id="iniciar" type="submit" value="Login">
+        </form>
+        <a href="#" class="opciones" >¿Olvidaste tu password?</a>
+        <a href="register.html" class="opciones">Crear cuenta nueva</a>
+    </div>
+</body>
+</html>

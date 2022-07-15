@@ -1,31 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-{%extends "layout.html"%}
-{%block estilos%}
-<link rel="stylesheet" href='{{ url_for("static", filename="login.css") }}'>
+    <link rel="stylesheet" type="text/css" href="../static/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/jv.css">
+    <link rel="stylesheet" type="text/css" href="../static/carrito.css">
+    <link rel="stylesheet" type="text/css" href="../static/login.css">
 
-{%endblock%}
+    <script type="text/javascript">
+        function logout()
+        {
+            location.href= "login.html"
+        }
+    </script>
 
-{%block contenido%}
+    <script> 
 
-<div class="header">
-    <div class="container">
+        document.addEventListener('DOMContentLoaded', () => {
+            const request = new XMLHttpRequest();
+            request.open('POST', 'http://127.0.0.1:5000/logout');
 
+            document.querySelector("#form").onsubmit = () => {
+                const username = document.querySelector("#username").value;
+                const psw = document.querySelector("#password").value;
 
-        <h1>Inicio de Sesion</h1>
-        <section class="all">
+                request.open('POST', 'http://127.0.0.1:5000/login');
 
-            <form  class="login" action="{{url_for('login')}}" method="post" autocomplete="off">
-                <div class="msg">{{ message }}</div>
-                <br>    
-                    <label class="usuario_" for="username">Nombre de Usuario</label> <br>
-                    <input type="text" id="username" name="username"  autocomplete="off" placeholder="Alberto Llamoca N" class="control" required>
-                <br>
-                    <label class="usuario_" for="password">Contraseña</label> <br>
-                    <input type="password" id="password" name="password" autocomplete="off" placeholder="Ingresa tu contraseña" class="control"required>
-                    <button class="button2">Iniciar Sesion</button>
-            </form>
-                <p class="worddark">New to this page? <a class="worddark" href="{{ url_for('register')}}">Register here</a></p>
-        </section>
+                request.onload = () => {
+                    const data = JSON.parse(request.responseText);
+                    alert(data);
+                    if(data['login']) {
+                        localStorage.setItem("username", username);
+                        location.href = "menu.html";
+                    } else {
+                        document.querySelector("#username").value = "";
+                        document.querySelector("#password").value = "";
+                    }
+                }
+
+                const data = new FormData();
+                data.append('username', username);
+                data.append('password', psw);
+
+                request.send(data);
+                return false;
+            };
+
+            document.querySelector("#iniciar").disabled = true;
+
+            function login(){
+                if (document.querySelector("#username").value.length > 0 && document.querySelector("#password").value.length > 0){
+                    document.querySelector("#iniciar").style.background="#ffc107";
+                    document.querySelector("#iniciar").style.color="black";
+                    document.querySelector("#iniciar").disabled = false;
+                }
+                else
+                document.querySelector("#iniciar").disabled = true;
+            }
+
+            document.querySelector("#username").onkeyup = () => {
+                document.querySelector("#iniciar").style.background="#b80f22";
+                document.querySelector("#iniciar").style.color="#fff";
+                login()
+            };
+            document.querySelector("#password").onkeyup = () => {
+                document.querySelector("#iniciar").style.background="#b80f22";
+                document.querySelector("#iniciar").style.color="#fff";
+                login()
+            };
+
+        });
+    </script>
+    <title>Login</title>
+    
+</head>
+
+<body>
+    <div class="Login">
+        <header>
+            <h1>Iniciar sesión</h1> 
+        </header>
+        <form class = "login" id="form">
+            <br>
+            <label class="usuario_" for = "username">Nombre de Usuario</label> <br>
+            <input id="username" type="text" placeholder="Alberto Llamoca N" name="user" autocomplete="off" required>
+            <br>
+            <label class="usuario_" for="password">password</label>
+            <input id="password" type="password" placeholder="Ingresa tu password" name="password" autocomplete="off" required>
+            <input id="iniciar" type="submit" value="Login">
+        </form>
+        <a href="#" class="opciones" >¿Olvidaste tu password?</a>
+        <a href="register.html" class="opciones">Crear cuenta nueva</a>
     </div>
-</div>
-{%endblock%}
+</body>
+</html>
