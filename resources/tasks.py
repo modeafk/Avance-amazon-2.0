@@ -1,5 +1,4 @@
 from flask import request, jsonify, Blueprint
-import hashlib
 
 from database import tasks
 
@@ -58,14 +57,39 @@ def add_task():
     name = request.json['name']
     price = request.json['price']
     description = request.json['description']
+    img = request.json['img']
 
-    data = (name, price, description)
+    data = (name, price, description, img)
     product_id = tasks.insert_products(data)
 
     if product_id:
         task = tasks.select_product_by_id(product_id)
         return jsonify(task)
     return jsonify({'message': 'Internal Error'})
+
+
+@product_bp.route('/product', methods=['POST'])
+def add_task():
+    name = request.json['name']
+    price = request.json['price']
+    description = request.json['description']
+    img = request.json['img']
+
+    data = (name, price, description, img)
+    product_id = tasks.insert_products(data)
+
+    if product_id:
+        task = tasks.select_product_by_id(product_id)
+        return jsonify(task)
+    return jsonify({'message': 'Internal Error'})
+
+
+@product_bp.route('/product/<string:id_p>', methods=['GET'])
+def add_task(id_p):
+    if tasks.select_product_by_id(id_p):
+        product = tasks.select_product_by_id(id_p)
+        return jsonify(product)
+    return False
 
 
 @product_bp.route('/product', methods=['GET'])

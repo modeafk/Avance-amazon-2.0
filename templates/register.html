@@ -11,7 +11,7 @@
     <script type="text/javascript">
         function logout()
         {
-            location.href= "login.html"
+            location.href= "menu.html"
         }
     </script>
 
@@ -23,6 +23,7 @@
 
             document.querySelector("#form").onsubmit = () => {
                 const username = document.querySelector("#username").value;
+                const email = document.querySelector("#email").value;
                 const psw = document.querySelector("#password").value;
 
                 request.open('POST', 'http://127.0.0.1:5000/register');
@@ -30,17 +31,19 @@
                 request.onload = () => {
                     const data = JSON.parse(request.responseText);
                     alert(data);
-                    if(data['login']) {
+                    if(data['register']) {
                         localStorage.setItem("username", username);
-                        location.href = "menu.html";
+                        location.href = "login.html";
                     } else {
                         document.querySelector("#username").value = "";
+                        document.querySelector("#email").value = "";
                         document.querySelector("#password").value = "";
                     }
                 }
 
                 const data = new FormData();
                 data.append('username', username);
+                data.append('email', email);
                 data.append('password', psw);
 
                 request.send(data);
@@ -49,7 +52,7 @@
 
             document.querySelector("#iniciar").disabled = true;
 
-            function login(){
+            function register(){
                 if (document.querySelector("#username").value.length > 0 && document.querySelector("#password").value.length > 0){
                     document.querySelector("#iniciar").style.background="#ffc107";
                     document.querySelector("#iniciar").style.color="black";
@@ -62,12 +65,17 @@
             document.querySelector("#username").onkeyup = () => {
                 document.querySelector("#iniciar").style.background="#b80f22";
                 document.querySelector("#iniciar").style.color="#fff";
-                login()
+                register()
+            };
+            document.querySelector("#email").onkeyup = () => {
+                document.querySelector("#iniciar").style.background="#b80f22";
+                document.querySelector("#iniciar").style.color="#fff";
+                register()
             };
             document.querySelector("#password").onkeyup = () => {
                 document.querySelector("#iniciar").style.background="#b80f22";
                 document.querySelector("#iniciar").style.color="#fff";
-                login()
+                register()
             };
 
         });
@@ -83,12 +91,22 @@
         </header>
         <form class = "login" id="form">
             <br>
-            <label class="usuario_" for = "username">Nombre de Usuario</label> <br>
+            <label class="e_entrada" for = "username">Username</label>
             <input id="username" type="text" placeholder="Alberto Llamoca N" name="user" autocomplete="off" class="control" required>
             <br>
-            <label class="usuario_" for="password">password</label>
-            <input id="password" type="password" placeholder="Ingresa tu password" name="password" autocomplete="off" class="control"required>
-            <input id="iniciar" type="submit" value="Login">
+            <label class="e_entrada" for = "username">E-mail</label>
+            <input id="email" type="text" placeholder="Alberto Llamoca N" name="email" autocomplete="off" class="control" required>
+            <br>
+            <label class="e_entrada" for="password">Contraseña</label>
+            <input id="password" type="password" placeholder="Ingresa tu password" name="password" autocomplete="off" class="control" required>
+            
+            <br>
+            <label class="e_entrada">Confirmar Contraseña</label>
+            <input type="password" autocomplete="off" placeholder="ingresar Contraseña" name="psw" id="psw" class="control" required>
+            
+            <br>
+            <input class="button" id="iniciar" type="submit" value="Login">
+            <br>
         </form>
         <a href="#" class="opciones" >¿Olvidaste tu password?</a>
         <a href="register.html" class="opciones">Crear cuenta nueva</a>

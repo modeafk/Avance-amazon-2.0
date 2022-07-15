@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS products(
 	"name"	TEXT NOT NULL UNIQUE,
 	"price"	INTEGER NOT NULL,
 	"description"	TEXT,
-	"img"	BLOB NOT NULL UNIQUE,
+	"img"	TEXT NOT NULL UNIQUE,
 	PRIMARY KEY("product_id" AUTOINCREMENT)
 );
 

@@ -7,7 +7,13 @@
 	<link rel="stylesheet" href='{{ url_for("static", filename="home.css") }}'>
     <link rel="stylesheet" href='{{ url_for("static", filename="jv.css") }}'>
     <link rel="stylesheet" href='{{ url_for("static", filename="carrito.css") }}'>
-    {%block estilos%}{%endblock%}
+    <script type="text/javascript">
+        function logout()
+        {
+            location.href= "login.html"
+        }
+    </script>
+    {%block head%}{%endblock%}
 </head>
 <body>
     <div class="header">
@@ -17,7 +23,7 @@
                 <div class="logo">
                     <div class="imagen1"></div>
                 </div>
-            </div>      
+            </div>     
             <div class="navbar">
                 <div class="searchbar">
                     <input type="text" id="busqueda" name="busqueda">
@@ -62,8 +68,8 @@
 	{%block contenido%}
 	
 	{%endblock%}
-    <script src='{{ url_for("static", filename="code.js") }}'>        
-    </script>
+    <!-- <script src='{{ url_for("static", filename="cart.js") }}'>        
+    </script> -->
 
     {%block script%}
 	
