@@ -49,7 +49,8 @@ def select_user_by_id(_id):
 def user_login(_username, _password):
     conn = create_connection()
     
-    sql = f"SELECT user_id FROM Users WHERE username='{_username}' AND password='{_password}'"
+    sql = f'''SELECT user_id FROM Users WHERE username='{_username}' 
+            AND password='{_password}' '''
 
     try:
         conn.row_factory = sqlite3.Row
@@ -132,6 +133,27 @@ def select_all_products():
             cur.close()
             conn.close()
 
+
+def update_task(_id, data):
+    conn = create_connection()
+
+    sql = f""" UPDATE products SET img = '{data}'
+                WHERE product_id = {_id}
+    """
+
+    try:
+        cur = conn.cursor()
+        cur.execute(sql)
+        conn.commit()
+        return True
+    except Error as e:
+        print(f"Error at update_task() : {str(e)}")
+        return False
+    
+    finally:
+        if conn:
+            cur.close()
+            conn.close()
 
 # ------------------------------- cart ------------------------------- 
 def insert_products_cart(data):

@@ -26,8 +26,6 @@ login_bp = Blueprint('routes-login', __name__)
 def seccion_login():
     username = request.form.get("username")
     password = request.form.get("password")
-    print(username)
-    print(password)
 
     if username != None and password != None:
         user = tasks.user_login(username, password)
@@ -54,7 +52,7 @@ def login_render():
 product_bp = Blueprint('routes-product', __name__)
 
 @product_bp.route('/product', methods=['POST'])
-def add_task():
+def add_product():
     name = request.json['name']
     price = request.json['price']
     description = request.json['description']
@@ -70,19 +68,28 @@ def add_task():
 
 
 @product_bp.route('/product', methods=['GET'])
-def get_tasks():
+def get_product():
     data = tasks.select_all_products()
 
     if data:
-        return jsonify({'Product': data})
+        return jsonify(data)
     elif data == False:
         return jsonify({'message': 'Internal Error'})
     else:
-        return jsonify({'Product': {}})
+        return jsonify({'data': {}})
 
 
-product_selc_bp = Blueprint('routes-product/<string:id_p>', __name__)
-@product_selc_bp.route('/product/<string:id_p>', methods=['GET'])
+@product_bp.route('/product', methods=['PUT'])
+def update_product():
+    product_id = request.json['product_id']
+    img = request.json['img']
+
+    if tasks.update_task(product_id, img):
+        return jsonify({'Cambio': True})
+    return jsonify({'Cambio': False})
+
+
+@product_bp.route('/product/<string:id_p>', methods=['GET'])
 def selec_produc(id_p):
     if tasks.select_product_by_id(id_p):
         product = tasks.select_product_by_id(id_p)

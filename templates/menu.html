@@ -27,7 +27,46 @@
             }
         }
 
-        
+        document.addEventListener('DOMContentLoaded', () => {
+            const request = new XMLHttpRequest();
+            request.open('GET', 'http://127.0.0.1:5000/product');
+            request.onload = () => {
+                const data = JSON.parse(request.responseText);
+                if(data){
+                    var productos = data;
+                    for(let i in productos){
+
+                        var img = document.createElement("img");
+                        img.setAttribute("src","../static/images_store/" + productos[i]['img']);
+                        img.setAttribute("width","280px");
+
+                        var select = document.createElement("input");
+                        select.setAttribute("type","button");
+                        select.setAttribute("class", "botons");
+                        select.setAttribute("value",productos[i]['name']);
+                        select.setAttribute("onclick","select_product("+productos[i]['product_id']+")");
+
+                        for(let i=0; i<4; i++){
+                            document.querySelector(".products").appendChild(document.createElement("br"));
+                        }
+
+                        document.querySelector(".products").appendChild(img);
+
+                        for(let i=0; i<2; i++){
+                            document.querySelector(".products").appendChild(document.createElement("br"));
+                        }
+
+                        document.querySelector(".products").appendChild(select);
+                    }
+
+                    for(let i=0; i<3; i++){
+                        document.querySelector(".products").appendChild(document.createElement("br"));
+                    }
+                }
+            }
+
+        request.send("get request");
+        });
 
     </script>
 
@@ -114,10 +153,6 @@
         <h2 class="title">Ultimos Productos</h2>
 
         <div class="products" style="align-items: center;">
-            <br>
-            <br>
-            <u style="color:white;"><h1 style="background: black; color:white; width: 50%; padding: 40px 5px;">Llena tu carrito del mejor Hardware</h1></u>
-    
         </div>
 
     </div>
