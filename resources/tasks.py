@@ -47,7 +47,7 @@ def seccion_login():
 def loget():
     if session:
         A = {'id': session['id'], 'loggedin': session['loggedin'],
-            'username': session['username']}
+             'username': session['username']}
         return jsonify(A)
     return jsonify({"loggedin": False})
 
