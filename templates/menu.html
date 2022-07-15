@@ -40,8 +40,11 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const request = new XMLHttpRequest();
+<<<<<<< HEAD
             request.open('DELETE', 'http://127.0.0.1:5000/logout');
             request.send("reset all");
+=======
+>>>>>>> 0a281864bf1a4b061d5421b51d06d62b87aa69c3
             request.open('GET', 'http://127.0.0.1:5000/login');
             request.onload = () => {
                 const data = JSON.parse(request.responseText);
