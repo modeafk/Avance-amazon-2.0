@@ -15,10 +15,13 @@
     <script>
         function logout(){
             const request = new XMLHttpRequest();
+            request.open('POST', 'http://127.0.0.1:5000/logout');
             request.open('DELETE', 'http://127.0.0.1:5000/logout');
             request.send("reset all");
             location.href = "menu.html";
-        }
+            
+            
+        }   
         function login(){
             location.href = "login.html";
         }

@@ -50,8 +50,8 @@ def select_user_by_id(_id):
 
 def user_login(_username, _password):
     conn = create_connection()
-    
-    sql = f'''SELECT user_id FROM Users WHERE username='{_username}' 
+
+    sql = f'''SELECT user_id FROM Users WHERE username='{_username}'
             AND password='{_password}' '''
 
     try:
@@ -151,13 +151,14 @@ def update_task(_id, data):
     except Error as e:
         print(f"Error at update_task() : {str(e)}")
         return False
-    
+
     finally:
         if conn:
             cur.close()
             conn.close()
 
-# ------------------------------- cart ------------------------------- 
+
+# ------------------------------- cart -------------------------------
 def insert_products_cart(data):
     conn = create_connection()
 

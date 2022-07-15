@@ -1,12 +1,11 @@
-from math import fabs
+
 from flask import request, jsonify, Blueprint
 
 from database import tasks
 
-session = { "loggedin": False,
-            "id":None,
-            "username": None
-}
+session = {"loggedin": False,
+           "id": None,
+           "username": None}
 
 
 register_bp = Blueprint('routes-register', __name__)
@@ -47,9 +46,10 @@ def seccion_login():
 @login_bp.route('/login', methods=['GET'])
 def loget():
     if session:
-        A= {'id': session['id'], 'loggedin':session['loggedin'], 'username':session['username']}
-        return jsonify (A)
-    return jsonify({"loggedin":False})
+        A = {'id': session['id'], 'loggedin': session['loggedin'],
+            'username': session['username']}
+        return jsonify(A)
+    return jsonify({"loggedin": False})
 
 
 logout_bp = Blueprint('routes-logout', __name__)
@@ -58,7 +58,7 @@ logout_bp = Blueprint('routes-logout', __name__)
 @logout_bp.route("/logout", methods=["DELETE"])
 def login_render():
     if "loggedin" in session:
-        session.pop('loggedin',None)
+        session.pop('loggedin', None)
         session.pop('id', None)
         session.pop('username', None)
     print(session)
@@ -90,7 +90,7 @@ def get_product():
 
     if data:
         return jsonify(data)
-    elif data == False:
+    elif data:
         return jsonify({'message': 'Internal Error'})
     else:
         return jsonify({'data': {}})
