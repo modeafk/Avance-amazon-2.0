@@ -40,6 +40,14 @@
                         img.setAttribute("src","../static/images_store/" + productos[i]['img']);
                         img.setAttribute("width","280px");
 
+                        var price = document.createElement("tr");
+                        price.setAttribute("class", "precio");
+                        price.setAttribute("style", "text-align:center;");
+                        price.setAttribute("name",productos[i]['price']);
+                        price.innerHTML = `
+                            <td>  ${productos[i]['price']} $ </td>
+                        `;
+
                         var select = document.createElement("input");
                         select.setAttribute("type","button");
                         select.setAttribute("class", "botons");
@@ -52,14 +60,20 @@
 
                         document.querySelector(".products").appendChild(img);
 
-                        for(let i=0; i<2; i++){
+                        for(let i=0; i<1; i++){
+                            document.querySelector(".products").appendChild(document.createElement("br"));
+                        }
+
+                        document.querySelector(".products").appendChild(price);
+
+                        for(let i=0; i<1; i++){
                             document.querySelector(".products").appendChild(document.createElement("br"));
                         }
 
                         document.querySelector(".products").appendChild(select);
                     }
 
-                    for(let i=0; i<3; i++){
+                    for(let i=0; i<1; i++){
                         document.querySelector(".products").appendChild(document.createElement("br"));
                     }
                 }
@@ -152,7 +166,7 @@
         </div>
         <h2 class="title">Ultimos Productos</h2>
 
-        <div class="products" style="align-items: center;">
+        <div class="products" style="align-items: center; text-align: center;">
         </div>
 
     </div>
