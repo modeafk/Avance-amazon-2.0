@@ -1,4 +1,3 @@
-
 import sqlite3
 from sqlite3 import Error
 
@@ -158,22 +157,22 @@ def update_task(_id, data):
             conn.close()
 
 # ------------------------------- cart ------------------------------- 
-def insert_products_cart(data):
+def insert_products_cart(_id_p, user_id):
     conn = create_connection()
-
-    sql = """ INSERT INTO products (name, price)
-            VALUES( ?, ?)
-    """
 
     try:
         cur = conn.cursor()
-        cur.execute(sql, data)
-        conn.commit()
-        return cur.lastrowid
+        cur.execute(f"SELECT * FROM Carrito WHERE user_ID='{user_id}' AND product_ID='{_id_p}'")
+        if cur.fetchone():
+            cur.execute(f"UPDATE Carrito SET cantidad=cantidad+1 WHERE user_ID='{user_id}' AND product_ID='{_id_p}'")
+            conn.commit()
+            print("stoy en 167")
+            return True
+        else:
+            cur.execute(f"INSERT INTO Carrito (user_ID, product_ID, cantidad) VALUES ( '{user_id}', '{_id_p}', '{1}')")
+            conn.commit()
+            print("stoy en 171")
+            return True
     except Error as e:
         print(f"Error at insert_products_cart() : {str(e)}")
         return False
-    finally:
-        if conn:
-            cur.close()
-            conn.close()
