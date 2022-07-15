@@ -13,17 +13,17 @@
 
         function logout()
         {
-            username = null;
-            psw = null;
+            alert("sto aqui");
+            document.getElementById("form").reset();
 
             const request = new XMLHttpRequest();
-            request.open('POST', 'http://127.0.0.1:5000/logout');
+            request.open('DELETE', 'http://127.0.0.1:5000/logout');
             location.href = "menu.html";
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const request = new XMLHttpRequest();
-            request.open('POST', 'http://127.0.0.1:5000/logout');
+            request.open('DELETE', 'http://127.0.0.1:5000/logout');
 
             document.querySelector("#form").onsubmit = () => {
                 const username = document.querySelector("#username").value;
@@ -33,8 +33,8 @@
 
                 request.onload = () => {
                     const data = JSON.parse(request.responseText);
-                    alert("Has iniciado sesion con exito");
                     if(data['login']) {
+                        alert("Has iniciado sesion con exito");
                         localStorage.setItem("username", username);
                         location.href = "menu.html";
                     } else {
@@ -42,7 +42,6 @@
                         document.querySelector("#password").value = "";
                     }
                 }
-
                 const data = new FormData();
                 data.append('username', username);
                 data.append('password', psw);

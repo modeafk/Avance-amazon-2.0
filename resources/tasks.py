@@ -46,6 +46,7 @@ def seccion_login():
 
 @login_bp.route('/login', methods=['GET'])
 def loget():
+    
     return jsonify({'id': session['id'], 'loggedin':session['loggedin'], 'username':session['username']})
 
 
@@ -53,7 +54,7 @@ def loget():
 logout_bp = Blueprint('routes-logout', __name__)
 
 
-@logout_bp.route("/logout", methods=["POST"])
+@logout_bp.route("/logout", methods=["DELETE"])
 def login_render():
     if "loggedin" in session:
         session.pop('loggedin', False)
