@@ -15,7 +15,7 @@
     margin: 0 auto;
 }
 .image{
-    padding: 80px;
+    padding: 100px;
     margin: auto;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@
     width: 400px;
     background-size: cover;
 }
-h3 {
+h1 {
     font-size: 2.5em;
     margin: 0;
     text-align: center;
@@ -35,27 +35,19 @@ label {
     display: flex !important;
 }
 
-
-button {
+.button2 {
     background: #ffc107;
-    margin: 20px auto 0;
-    padding: 8px 15px;    
+    padding: 10px 30px;    
+    color: white;
 }
-button:hover{
+.button2:hover{
     background: #ffc1095d;
-}
-
-
-
-.img2 {
-    height: 100%;
-    width: 100%;
-    margin: auto;
 }
 
 .entrada{
     padding: 15px;
     border-radius: 5px;
+
 }
 .e_entrada{
     font-size: 0.9em;    

@@ -29,7 +29,7 @@
 
                 request.onload = () => {
                     const data = JSON.parse(request.responseText);
-                    alert(data);
+                    alert("Has iniciado sesion con exito");
                     if(data['login']) {
                         localStorage.setItem("username", username);
                         location.href = "menu.html";

@@ -3,10 +3,10 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" type="text/css" href="../static/home.css">
+    <link rel="stylesheet" type="text/css" href="../static/menu.css">
     <link rel="stylesheet" type="text/css" href="../static/jv.css">
     <link rel="stylesheet" type="text/css" href="../static/carrito.css">
-    <link rel="stylesheet" type="text/css" href="../static/login.css">
+    <link rel="stylesheet" type="text/css" href="../static/register.css">
 
     <script type="text/javascript">
         function logout()
@@ -30,7 +30,7 @@
 
                 request.onload = () => {
                     const data = JSON.parse(request.responseText);
-                    alert(data);
+                    alert("te has registrado con exito");
                     if(data['register']) {
                         localStorage.setItem("username", username);
                         location.href = "login.html";
@@ -39,6 +39,7 @@
                         document.querySelector("#email").value = "";
                         document.querySelector("#password").value = "";
                     }
+                    
                 }
 
                 const data = new FormData();
@@ -86,31 +87,26 @@
 
 <body>
     <a href="menu.html" class="image"></a>
-    <div class="Login">
-        <header>
-            <h1>Iniciar sesión</h1> 
-        </header>
-        <form class = "login" id="form">
+            <h1>Registrate</h1> 
+     <div class="box">
+        <form class="login" id="form">
             <br>
-            <label class="e_entrada" for = "username">Username</label>
-            <input id="username" type="text" placeholder="Alberto Llamoca N" name="user" autocomplete="off" class="control" required>
+            <label class="e_entrada" for = "username"> <b>Username</b> </label>
+            <input id="username" type="text" placeholder="Alberto Llamoca N" name="user" autocomplete="off" class="entrada" required>
             <br>
-            <label class="e_entrada" for = "username">E-mail</label>
-            <input id="email" type="text" placeholder="Alberto Llamoca N" name="email" autocomplete="off" class="control" required>
+            <label class="e_entrada" for = "username"><b>E-mail</b> </label>
+            <input class="entrada" id="email" type="text" placeholder="Alberto Llamoca N" name="email" autocomplete="off"  required>
             <br>
-            <label class="e_entrada" for="password">Contraseña</label>
-            <input id="password" type="password" placeholder="Ingresa tu password" name="password" autocomplete="off" class="control" required>
-            
+            <label class="e_entrada" for="password"><b>Contraseña</b> </label>
+            <input class="entrada"id="password" type="password" placeholder="Ingresa tu password" name="password" autocomplete="off"  required>
             <br>
             <label class="e_entrada">Confirmar Contraseña</label>
-            <input type="password" autocomplete="off" placeholder="ingresar Contraseña" name="psw" id="psw" class="control" required>
-            
-            <br>
-            <input class="button" id="iniciar" type="submit" value="Login">
+            <input class="entrada" type="password" autocomplete="off" placeholder="ingresar Contraseña" name="psw" id="psw"  required>
+            <input class="button2" id="iniciar" type="submit" value="Login">
             <br>
         </form>
         <a href="#" class="opciones" >¿Olvidaste tu password?</a>
-        <a href="register.html" class="opciones">register</a>
-    </div>
+        <a href="login.html" class="opciones">login</a>
+     </div>
 </body>
 </html>
