@@ -1,11 +1,11 @@
-from pickle import FALSE
+
 import sqlite3
 from sqlite3 import Error
 
 from .connection import create_connection
 
 
-# ------------------------------- users ------------------------------- 
+# ------------------------------- users -------------------------------
 def insert_user(data):
     conn = create_connection()
 
@@ -21,16 +21,17 @@ def insert_user(data):
     except Error as e:
         print(f"Error at insert_user() : {str(e)}")
         return False
-    
+
     finally:
         if conn:
             cur.close()
             conn.close()
 
+
 def select_user_by_id(_id):
     conn = create_connection()
-    
-    sql = f"SELECT * FROM users WHERE user_id = {_id}" 
+
+    sql = f"SELECT * FROM users WHERE user_id = {_id}"
 
     try:
         conn.row_factory = sqlite3.Row
@@ -46,11 +47,18 @@ def select_user_by_id(_id):
             cur.close()
             conn.close()
 
+
 def user_login(_username, _password):
     conn = create_connection()
+<<<<<<< HEAD
     
     sql = f'''SELECT user_id FROM Users WHERE username='{_username}' 
             AND password='{_password}' '''
+=======
+
+    sql = f'''SELECT user_id FROM Users WHERE username ='{_username}'
+    AND password ='{_password}' '''
+>>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
 
     try:
         conn.row_factory = sqlite3.Row
@@ -71,7 +79,7 @@ def user_login(_username, _password):
             conn.close()
 
 
-# ------------------------------- product ------------------------------- 
+# ------------------------------- product -------------------------------
 def insert_products(data):
     conn = create_connection()
 
@@ -87,7 +95,7 @@ def insert_products(data):
     except Error as e:
         print(f"Error at insert_products() : {str(e)}")
         return False
-    
+
     finally:
         if conn:
             cur.close()
@@ -96,8 +104,8 @@ def insert_products(data):
 
 def select_product_by_id(_id):
     conn = create_connection()
-    
-    sql = f"SELECT * FROM products WHERE product_id = {_id}" 
+
+    sql = f"SELECT * FROM products WHERE product_id = {_id}"
 
     try:
         conn.row_factory = sqlite3.Row
@@ -123,7 +131,7 @@ def select_all_products():
         cur = conn.cursor()
         cur.execute(sql)
         product_rows = cur.fetchall()
-        products = [ dict(row) for row in product_rows ]
+        products = [dict(row) for row in product_rows]
         return products
     except Error as e:
         print(f"Error at select_all_products() : {str(e)}")
@@ -134,6 +142,7 @@ def select_all_products():
             conn.close()
 
 
+<<<<<<< HEAD
 def update_task(_id, data):
     conn = create_connection()
 
@@ -156,6 +165,9 @@ def update_task(_id, data):
             conn.close()
 
 # ------------------------------- cart ------------------------------- 
+=======
+# ------------------------------- cart -------------------------------
+>>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
 def insert_products_cart(data):
     conn = create_connection()
 
@@ -171,10 +183,7 @@ def insert_products_cart(data):
     except Error as e:
         print(f"Error at insert_products_cart() : {str(e)}")
         return False
-    
     finally:
         if conn:
             cur.close()
             conn.close()
-
-

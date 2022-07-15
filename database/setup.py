@@ -1,5 +1,3 @@
-from re import S
-import sqlite3
 from sqlite3 import Error
 
 from .connection import create_connection
@@ -8,6 +6,7 @@ from .connection import create_connection
 def read_file(path):
     with open(path, "r") as sql_file:
         return sql_file.read()
+
 
 def create_tables():
     conn = create_connection()
@@ -28,4 +27,3 @@ def create_tables():
         if conn:
             cur.close()
             conn.close()
-

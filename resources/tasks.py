@@ -6,28 +6,31 @@ session = {}
 
 
 register_bp = Blueprint('routes-register', __name__)
+
+
 @register_bp.route('/register', methods=['POST'])
 def add_user():
     username = request.form.get('username')
     email = request.form.get("email")
     password = request.form.get("password")
 
-    if username != None and email != None and password != None:
+    if username is not None and email is not None and password is not None:
         data = (username, email, password)
         user_id = tasks.insert_user(data)
         if user_id:
-            user = tasks.select_user_by_id(user_id)
             return jsonify({'register': True})
     return jsonify({'register': False})
 
 
 login_bp = Blueprint('routes-login', __name__)
+
+
 @login_bp.route('/login', methods=['POST'])
 def seccion_login():
     username = request.form.get("username")
     password = request.form.get("password")
 
-    if username != None and password != None:
+    if username is not None and password is not None:
         user = tasks.user_login(username, password)
         if user:
             session['loggedin'] = True
@@ -38,6 +41,8 @@ def seccion_login():
 
 
 logout_bp = Blueprint('routes-logout', __name__)
+
+
 @logout_bp.route("/logout", methods=["POST"])
 def login_render():
     if "loggedin" in session:
@@ -50,6 +55,7 @@ def login_render():
 
 
 product_bp = Blueprint('routes-product', __name__)
+
 
 @product_bp.route('/product', methods=['POST'])
 def add_product():
@@ -72,13 +78,19 @@ def get_product():
     data = tasks.select_all_products()
 
     if data:
+<<<<<<< HEAD
         return jsonify(data)
     elif data == False:
+=======
+        return jsonify({'Product': data})
+    elif data:
+>>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
         return jsonify({'message': 'Internal Error'})
     else:
         return jsonify({'data': {}})
 
 
+<<<<<<< HEAD
 @product_bp.route('/product', methods=['PUT'])
 def update_product():
     product_id = request.json['product_id']
@@ -90,6 +102,12 @@ def update_product():
 
 
 @product_bp.route('/product/<string:id_p>', methods=['GET'])
+=======
+product_selc_bp = Blueprint('routes-product/<string:id_p>', __name__)
+
+
+@product_selc_bp.route('/product/<string:id_p>', methods=['GET'])
+>>>>>>> 8fe05e731c7ee2403db0efc93bcd252341642d0d
 def selec_produc(id_p):
     if tasks.select_product_by_id(id_p):
         product = tasks.select_product_by_id(id_p)
