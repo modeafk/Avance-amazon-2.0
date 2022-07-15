@@ -8,9 +8,9 @@ session = {}
 register_bp = Blueprint('routes-register', __name__)
 @register_bp.route('/register', methods=['POST'])
 def add_user():
-    username = request.json['username']
-    email = request.json['email']
-    password = request.json['password'] 
+    username = request.form.get('username')
+    email = request.form.get("email")
+    password = request.form.get("password")
 
     if username != None and email != None and password != None:
         data = (username, email, password)
@@ -69,30 +69,6 @@ def add_task():
     return jsonify({'message': 'Internal Error'})
 
 
-@product_bp.route('/product', methods=['POST'])
-def add_task():
-    name = request.json['name']
-    price = request.json['price']
-    description = request.json['description']
-    img = request.json['img']
-
-    data = (name, price, description, img)
-    product_id = tasks.insert_products(data)
-
-    if product_id:
-        task = tasks.select_product_by_id(product_id)
-        return jsonify(task)
-    return jsonify({'message': 'Internal Error'})
-
-
-@product_bp.route('/product/<string:id_p>', methods=['GET'])
-def add_task(id_p):
-    if tasks.select_product_by_id(id_p):
-        product = tasks.select_product_by_id(id_p)
-        return jsonify(product)
-    return False
-
-
 @product_bp.route('/product', methods=['GET'])
 def get_tasks():
     data = tasks.select_all_products()
@@ -103,3 +79,12 @@ def get_tasks():
         return jsonify({'message': 'Internal Error'})
     else:
         return jsonify({'Product': {}})
+
+
+product_selc_bp = Blueprint('routes-product/<string:id_p>', __name__)
+@product_selc_bp.route('/product/<string:id_p>', methods=['GET'])
+def selec_produc(id_p):
+    if tasks.select_product_by_id(id_p):
+        product = tasks.select_product_by_id(id_p)
+        return jsonify(product)
+    return False
