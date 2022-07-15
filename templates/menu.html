@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href='../static/home.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <link rel="stylesheet" type="text/css" href='../static/carrito.css'>
+    <link rel="stylesheet" type="text/css" href='../static/jv.css'>
 
     <title>index</title>
 
@@ -40,11 +41,6 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const request = new XMLHttpRequest();
-<<<<<<< HEAD
-            request.open('DELETE', 'http://127.0.0.1:5000/logout');
-            request.send("reset all");
-=======
->>>>>>> 0a281864bf1a4b061d5421b51d06d62b87aa69c3
             request.open('GET', 'http://127.0.0.1:5000/login');
             request.onload = () => {
                 const data = JSON.parse(request.responseText);
@@ -54,6 +50,28 @@
                 logout.setAttribute("onclick", "logout()")
                 logout.innerHTML = `
                     Logout
+                `;
+
+                var carrito = document.createElement("a");
+                carrito.setAttribute("href", "carrito")
+                carrito.innerHTML = `
+                    <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" width="30px" height="30px" id="img-carrito">
+                    <div id="carrito">
+                        <table id="lista-carrito" class="u-full-width">
+                            <thead>
+                                <tr>
+                                    <th>Imagen</th>
+                                    <th>Nombre</th>
+                                    <th>Precio</th>
+                                    <th>Cantidad</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <a href="#" id="vaciar-carrito" class="button u-full-width">Vaciar Carrito</a>
+                    </div>
                 `;
 
                 var login = document.createElement("a");
@@ -70,6 +88,7 @@
                 console.log(data);
                 if (data['loggedin']) {
                     document.querySelector(".loget").appendChild(logout);
+                    document.querySelector(".submenu").appendChild(carrito);
                 } else {
                     document.querySelector(".loget").appendChild(login);
                     document.querySelector(".loget").appendChild(register);
@@ -138,7 +157,7 @@
 </head>
 
 <body>
-    <a href="menu.html" class="image"></a>
+    <a href="menu.html" class="image" style="width: 100;"></a>
     <div class="buscador">
         <input type="text" id="busqueda" name="busqueda">
         <button id="button1" type="submit">search</button>
@@ -155,40 +174,16 @@
             
                 </div>
             </div>      
-            <div class="navbar">                
+            <div class="navbar">  
+                <div style="position: relative; text-align: right; height: 45px; width: 45px; float: right;" id="carrito">
+                    <li class="submenu">
+                        
+                    </li>
+                </div>              
             </div>
 
-            <div class="container-slider">
-                <div class="slider" id="slider">
-                    <div class="slider__section">
-                        <img src="../static/images_store/carrusel1.jpg" alt="" class="slider__img">
-                    </div>
-                    <div class="slider__section">
-                        <img src="../static/images_store/carrusel2.jpg" alt="" class="slider__img">
-                    </div>
-                    <div class="slider__section">
-                        <img src="../static/images_store/carrusel3.jpg" alt="" class="slider__img">
-                    </div>
-                    <div class="slider__section">
-                        <img src="../static/images_store/carrusel4.jpg" alt="" class="slider__img">
-                    </div>
-                </div>
-                <div class="slider__btn slider__btn--right"id="btn-right">&#62;</div>
-                <div class="slider__btn slider__btn--left"id="btn-left">&#60;</div>
-            </div>
-            
             
 
-            <div class="row">
-                <div class="col-2">
-                    <h2>Puedes adentrarte en el mundo del anime,ver diversos personajes a los cuales apreciaras mucho
-                        y querras tenerlos, elige el que mas te guste y no te quedes con las ganas</h2>
-                    <a href="" class="btn">Unete ya! &#8594;</a>
-                </div>
-                <div class="col-2">
-                    <img src="../static/images_store/aot.jpg" width="300px">
-                </div>
-            </div>
         </div>
     </div>
 
@@ -244,8 +239,6 @@
         </div>
     </div>
 
-    
-    <script src="../static/slider.js">
     </script>
 </body>
 </html>

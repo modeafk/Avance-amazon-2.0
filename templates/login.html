@@ -13,20 +13,14 @@
 
         function logout()
         {
-            alert("sto aqui");
             document.getElementById("form").reset();
 
             const request = new XMLHttpRequest();
-<<<<<<< HEAD
-            request.open('DELETE', 'http://127.0.0.1:5000/logout');
-=======
             request.open('POST', 'http://127.0.0.1:5000/logout');
             request.onload = () => {
->>>>>>> 0a281864bf1a4b061d5421b51d06d62b87aa69c3
             location.href = "menu.html";
             }
             request.send("sexp");
-
         }
 
         document.addEventListener('DOMContentLoaded', () => {
