@@ -14,6 +14,16 @@
 .box input {
     margin: 0 auto;
 }
+.image{
+    padding: 80px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: url("logo/store.png") center;
+    width: 400px;
+    background-size: cover;
+}
 h3 {
     font-size: 2.5em;
     margin: 0;

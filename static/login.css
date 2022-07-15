@@ -3,7 +3,16 @@
     margin: 0;
     background: fixed;
 }
-
+.image{
+    padding: 80px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    background: url("logo/store.png") center;
+    width: 400px;
+    background-size: cover;
+}
 .porsi{
     padding: 20px;
 }
@@ -25,7 +34,6 @@
     padding-left: 25px;
     padding-right: 25px;
 }
-
 h1{
     padding: 15px;
     font-size: 2.5em;

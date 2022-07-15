@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -32,9 +32,17 @@
     </script>
 
 </head>
-
+<link rel="stylesheet" type="text/css" href='../static/home.css'>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+<link rel="stylesheet" href='{{ url_for("static", filename="carrito.css") }}'>
 <body>
-
+    <a href="menu.html" class="image"></a>
+    <div class="buscador">
+        <input type="text" id="busqueda" name="busqueda">
+        <button id="button1" type="submit">search</button>
+        <a href="login.html">aea</a>
+        <a href="register.html">aea</a>
+</div>
     <div class="header">
 
         <div class="container">
@@ -136,8 +144,8 @@
         </div>
     </div>
 
-    <script src='{{ url_for("static", filename="code.js") }}'></script>
 
-    <script src='{{ url_for("static", filename="slider.js") }}'></script>
-
+<script src='{{ url_for("static", filename="slider.js") }}'>
+</script>
 </body>
+</html>
