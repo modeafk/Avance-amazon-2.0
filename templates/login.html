@@ -13,19 +13,21 @@
 
         function logout()
         {
-            document.getElementById("form").reset();
+            username = null;
+            psw = null;
 
             const request = new XMLHttpRequest();
             request.open('POST', 'http://127.0.0.1:5000/logout');
             request.onload = () => {
-            location.href = "menu.html";
+                location.href = "menu.html";
             }
             request.send("sexp");
+
         }
 
         document.addEventListener('DOMContentLoaded', () => {
             const request = new XMLHttpRequest();
-            request.open('DELETE', 'http://127.0.0.1:5000/logout');
+            request.open('POST', 'http://127.0.0.1:5000/logout');
 
             document.querySelector("#form").onsubmit = () => {
                 const username = document.querySelector("#username").value;

@@ -16,12 +16,18 @@
         function logout(){
             const request = new XMLHttpRequest();
             request.open('POST', 'http://127.0.0.1:5000/logout');
+<<<<<<< HEAD
             request.open('DELETE', 'http://127.0.0.1:5000/logout');
             request.send("reset all");
             location.href = "menu.html";
             
             
         }   
+=======
+            request.send("reset all");
+            location.href = "login.html";
+        }
+>>>>>>> c555e1c37698ce4b1cbf59e550811e7be58798c4
         function login(){
             location.href = "login.html";
         }
@@ -29,15 +35,19 @@
             location.href = "register.html";
         }
 
-        function select_product(id_product){
+        function add_product_cart(id_product){
             const request = new XMLHttpRequest();
-            request.open('POST', 'http://127.0.0.1:5000/product/id_product');
-            const data = new FormData();
-            data.append('product_id', id_product);
-            data.append('action', 'select');
-            request.send(data);
+            request.open('POST', 'http://127.0.0.1:5000/cart/'+id_product);
+            request.send("logout post");
             request.onload = () => {
-                location.href = "produc.html";
+                const data = JSON.parse(request.responseText)
+                console.log(data);
+                if (data.success){
+                    alert("se a agregado corectamente")
+                } else {
+                    location.href = "login.html";
+                    alert("no se pude agregar")
+                }
             }
         }
 
@@ -56,7 +66,7 @@
                 `;
 
                 var carrito = document.createElement("a");
-                carrito.setAttribute("href", "carrito")
+                carrito.setAttribute("href", "carrito.html")
                 carrito.innerHTML = `
                     <img src="https://cdn-icons-png.flaticon.com/512/107/107831.png" width="30px" height="30px" id="img-carrito">
                     <div id="carrito">
@@ -126,7 +136,8 @@
                         select.setAttribute("type","button");
                         select.setAttribute("class", "botons");
                         select.setAttribute("value",productos[i]['name']);
-                        select.setAttribute("onclick","select_product("+productos[i]['product_id']+")");
+                        console.log(productos[i]['product_id']);
+                        select.setAttribute("onclick","add_product_cart("+productos[i]['product_id']+")");
 
                         for(let i=0; i<4; i++){
                             document.querySelector(".products").appendChild(document.createElement("br"));

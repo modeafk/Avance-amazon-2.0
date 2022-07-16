@@ -1,4 +1,3 @@
-
 from flask import request, jsonify, Blueprint
 
 from database import tasks
@@ -55,7 +54,7 @@ def loget():
 logout_bp = Blueprint('routes-logout', __name__)
 
 
-@logout_bp.route("/logout", methods=["DELETE"])
+@logout_bp.route("/logout", methods=["POST"])
 def login_render():
     if "loggedin" in session:
         session.pop('loggedin', None)
@@ -112,3 +111,16 @@ def selec_produc(id_p):
         product = tasks.select_product_by_id(id_p)
         return jsonify(product)
     return False
+
+
+cart_product = Blueprint('routes-cart', __name__)
+
+
+@cart_product.route("/cart/<string:id_p>", methods=["POST"])
+def add_cart(id_p):
+    if session['loggedin']:
+        return jsonify({'success': False})
+    int_id_p = int(id_p)
+    int_secID = int(session['id'])
+    tasks.insert_products_cart(int_id_p, int_secID)
+    return jsonify({'success': True})
